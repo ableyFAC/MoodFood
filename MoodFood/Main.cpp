@@ -15,6 +15,9 @@ using namespace std;
 
 int main()
 {
+
+    cout << "testing testing commit message" << endl;
+
     RestaurantsList res1;
     getRestaurantData(res1);
 
