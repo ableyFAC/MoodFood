@@ -1,5 +1,9 @@
-#include "Interface.h"
+#include "RestaurantsList.h"
+#include <iostream>
+#include <string>
 #include <chrono>
+
+using namespace std;
 
 void intro()
 {
@@ -73,4 +77,9 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 		cout << "\nSending you to " << selection << "...\n";
 		//aMenu.displayByRestaurant(selection);
 	}
+}
+
+void printMenu(RestaurantsList& aRestaurant)
+{
+
 }

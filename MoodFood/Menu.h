@@ -9,12 +9,12 @@ using namespace std;
 
 enum class Category
 {
-	Entree,
-	Sides,
 	Appetizers,
-	Specials,
 	Dessert,
-	Drinks
+	Drinks,
+	Entrees,
+	Sides,
+	Specials
 };
 
 class Menu
@@ -35,7 +35,6 @@ class Menu
 		void setPrice(double newPrice);
 
 		void setCategory(Category c);
-
 
 	private:
 		std::string item;
