@@ -134,6 +134,7 @@
     <ClCompile Include="RestaurantsList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="MenuReader.h" />
     <ClInclude Include="RestaurantsReader.h" />
     <ClInclude Include="Restaurants.h" />

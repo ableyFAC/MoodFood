@@ -1,6 +1,4 @@
-#include "RestaurantsList.h"
-#include <iostream>
-#include <string>
+#include "Interface.h"
 #include <chrono>
 
 using namespace std;
@@ -75,7 +73,6 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 	if (found)
 	{
 		cout << "\nSending you to " << selection << "...\n";
-		//aMenu.displayByRestaurant(selection);
 	}
 }
 

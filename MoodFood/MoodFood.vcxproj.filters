@@ -50,6 +50,9 @@
     <ClInclude Include="MenuReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="restaurants_database.txt">
