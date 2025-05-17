@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const string MENU_FILE = "menuItems_database.txt";
+const string MENU_FILE = "McDonalds_menu.txt";
 
 void createRestaurantList(ifstream& infile, MenuList& aMenu)
 {
@@ -15,9 +15,12 @@ void createRestaurantList(ifstream& infile, MenuList& aMenu)
     string item;
     double price = 0;
 
+    // just testing the mcdonalds reader
+
     while (infile >> category >> item >> price)
     {
-        //testing testing 
+        auto newCat = aMenu.convert(category);
+        aMenu.addMenuItem(newCat, Menu(newCat, item, price));
     }
 }
 

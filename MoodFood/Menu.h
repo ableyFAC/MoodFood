@@ -1,16 +1,15 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <string>
 #include "RestaurantsList.h"
-#include <vector>
+#include <string>
 
 using namespace std;
 
 enum class Category
 {
 	Appetizers,
-	Dessert,
+	Desserts,
 	Drinks,
 	Entrees,
 	Sides,
@@ -35,6 +34,8 @@ class Menu
 		void setPrice(double newPrice);
 
 		void setCategory(Category c);
+
+		std::string getCategory(Category cat);
 
 	private:
 		std::string item;

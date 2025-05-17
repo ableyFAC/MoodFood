@@ -76,7 +76,7 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 	}
 }
 
-void printMenu(RestaurantsList& aRestaurant)
+void displayMenu(RestaurantsList& aRestaurant)
 {
 
 }

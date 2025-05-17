@@ -19,6 +19,9 @@
     <Filter Include="Static">
       <UniqueIdentifier>{3fecb665-3381-4c30-a9f8-23f236bfb5b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\menu_database.txt">
+      <UniqueIdentifier>{ba614a53-9a95-4187-a942-f74de74971da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -34,6 +37,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BigFive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +62,43 @@
     <ClInclude Include="Interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="restaurants_database.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="menuItems_database.txt">
-      <Filter>Resource Files</Filter>
+    <Text Include="Boudins_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="Bruxie_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="Coldstone_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="DinTaiFung_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="MarugameUdon_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="McDonalds_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="Ola_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="Popeye%27s_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
+    </Text>
+    <Text Include="Afters_menu.txt">
+      <Filter>Resource Files\menu_database.txt</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>

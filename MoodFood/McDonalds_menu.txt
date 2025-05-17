@@ -1,0 +1,8 @@
+Desserts StrawberryMilkshake 3.99
+Sides Fries 1.49
+Entrees BigMac 4.99
+Entrees McNuggetsMeal 8.99
+Desserts VanillaSoftServe 2.49
+Desserts ApplePie 1.99
+Entrees McFish 5.99
+Special BTSMeal 9.99
