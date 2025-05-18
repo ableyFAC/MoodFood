@@ -2,6 +2,7 @@
 #define INTERFACE_H
 
 #include "RestaurantsList.h"
+#include "MenuList.h"
 #include <iostream>
 #include <string>
 
@@ -13,7 +14,7 @@ void userMood(RestaurantsList& aRestaurant);
 
 void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant);
 
-void displayMenu(RestaurantsList& aRestaurant); 
+void displayMenu(RestaurantsList& aRestaurant, std::string restaurant); 
 
 
 

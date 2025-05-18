@@ -3,13 +3,15 @@
 
 using namespace std;
 
+
+string divider(51, '-');
+
+
 void intro()
 {
-	string s(51, '-');
-
-	cout << s << "\n"
+	cout << divider << "\n"
 		<< "\t	Welcome to MoodFood!\n"
-		<< s << "\n" << endl; 
+		<< divider << "\n" << endl;
 
 	cout << "How are you feeling right now, user?\n"
 		<< "\t (1) Happy :D\n"
@@ -73,10 +75,13 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 	if (found)
 	{
 		cout << "\nSending you to " << selection << "...\n";
+		cout << divider << endl;
+		displayMenu(aRestaurant, selection);
 	}
 }
 
-void displayMenu(RestaurantsList& aRestaurant)
+void displayMenu(RestaurantsList& aRestaurant, string restaurant)
 {
-
+	cout << "Welcome to " << restaurant << "!\n"
+		<< "What would you like to order?" << endl;
 }
