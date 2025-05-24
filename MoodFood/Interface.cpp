@@ -84,4 +84,78 @@ void displayMenu(RestaurantsList& aRestaurant, string restaurant)
 {
 	cout << "Welcome to " << restaurant << "!\n"
 		<< "What would you like to order?" << endl;
+
+	cout << "\t (1) Appetizers\n"
+		<< "\t (2) Entrees\n"
+		<< "\t (3) Specials\n"
+		<< "\t (4) Desserts\n"
+		<< "\t (5) Sides\n"
+		<< "\t (6) Drinks\n"
+		<< "\t (7) Checkout\n";
+
+	int selection = 0;
+
+	while (selection != 7)
+	{
+		cin >> selection;
+
+		switch (selection)
+		{
+			case 1: 
+				orderAppetizers(restaurant);
+				break;
+			case 2:
+				orderEntrees(restaurant);
+				break;
+			case 3:
+				orderSpecials(restaurant);
+				break;
+			case 4:
+				orderDesserts(restaurant);
+				break;
+			case 5:
+				orderSides(restaurant);
+				break;
+			case 6:
+				orderDrinks(restaurant);
+				break;
+			case 7:
+				total();
+		}
+	}
+}
+
+void orderAppetizers(string restaurant)
+{
+	cout << "Appetizer page";
+}
+
+void orderEntrees(string restaurant)
+{
+	cout << "Entrees page";
+}
+
+void orderSpecials(string restaurant)
+{
+	cout << "Specials page";
+}
+
+void orderDesserts(string restaurant)
+{
+	cout << "Desserts page";
+}
+
+void orderSides(string restaurant)
+{
+	cout << "Sides page";
+}
+
+void orderDrinks(string restaurant)
+{
+	cout << "Drinks page";
+}
+
+void total()
+{
+	cout << "the end" << endl;
 }

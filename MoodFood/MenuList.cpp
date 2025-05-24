@@ -7,7 +7,7 @@ void MenuList::addMenuItem(Category cat, const Menu& item)
 	theMenu[cat].push_back(item);
 }
 
-Category convert(const string& category)
+Category MenuList::convert(const string& category)
 {
 	if (category == "Appetizers")
 	{
@@ -32,5 +32,9 @@ Category convert(const string& category)
 	else if (category == "Specials")
 	{
 		return Category::Specials;
+	}
+	else
+	{
+		cerr << "Category does not exist" << endl;
 	}
 }
