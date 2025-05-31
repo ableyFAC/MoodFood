@@ -1,5 +1,6 @@
 #include "Interface.h"
 #include <chrono>
+#include <queue>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ void intro()
 		<< "\t (4) Not that great :(\n" << endl;
 }
 
-void userMood(RestaurantsList& aRestaurant)
+void userMood(RestaurantsList& aRestaurant, MenuList& aMenuList)
 {
 
 	int mood = 0;
@@ -46,10 +47,10 @@ void userMood(RestaurantsList& aRestaurant)
 	}
 	cout << endl;
 
-	chooseRestaurant(mood, aRestaurant);
+	chooseRestaurant(mood, aRestaurant, aMenuList);
 }
 
-void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
+void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& aMenuList)
 {
 	aRestaurant.displayRestaurants(mood);
 	cout << endl;
@@ -76,11 +77,11 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 	{
 		cout << "\nSending you to " << selection << "...\n";
 		cout << divider << endl;
-		displayMenu(aRestaurant, selection);
+		displayMenu(aRestaurant, selection, aMenuList);
 	}
 }
 
-void displayMenu(RestaurantsList& aRestaurant, string restaurant)
+void displayMenu(RestaurantsList& aRestaurant, string restaurant, MenuList& aMenuList)
 {
 	cout << "Welcome to " << restaurant << "!\n"
 		<< "What would you like to order?" << endl;
@@ -102,22 +103,22 @@ void displayMenu(RestaurantsList& aRestaurant, string restaurant)
 		switch (selection)
 		{
 			case 1: 
-				orderAppetizers(restaurant);
+				orderAppetizers(restaurant, aMenuList);
 				break;
 			case 2:
-				orderEntrees(restaurant);
+				orderEntrees(restaurant, aMenuList);
 				break;
 			case 3:
-				orderSpecials(restaurant);
+				orderSpecials(restaurant, aMenuList);
 				break;
 			case 4:
-				orderDesserts(restaurant);
+				orderDesserts(restaurant, aMenuList);
 				break;
 			case 5:
-				orderSides(restaurant);
+				orderSides(restaurant, aMenuList);
 				break;
 			case 6:
-				orderDrinks(restaurant);
+				orderDrinks(restaurant, aMenuList);
 				break;
 			case 7:
 				total();
@@ -125,32 +126,37 @@ void displayMenu(RestaurantsList& aRestaurant, string restaurant)
 	}
 }
 
-void orderAppetizers(string restaurant)
+void orderAppetizers(string restaurant, MenuList& aMenuList)
 {
-	cout << "Appetizer page";
+	cout << "Appetizers\n"
+		<< "------------\n";
+
+	aMenuList.printAppetizers(restaurant);
+
+
 }
 
-void orderEntrees(string restaurant)
+void orderEntrees(string restaurant, MenuList& aMenuList)
 {
 	cout << "Entrees page";
 }
 
-void orderSpecials(string restaurant)
+void orderSpecials(string restaurant, MenuList& aMenuList)
 {
 	cout << "Specials page";
 }
 
-void orderDesserts(string restaurant)
+void orderDesserts(string restaurant, MenuList& aMenuList)
 {
 	cout << "Desserts page";
 }
 
-void orderSides(string restaurant)
+void orderSides(string restaurant, MenuList& aMenuList)
 {
 	cout << "Sides page";
 }
 
-void orderDrinks(string restaurant)
+void orderDrinks(string restaurant, MenuList& aMenuList)
 {
 	cout << "Drinks page";
 }

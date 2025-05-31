@@ -17,6 +17,18 @@ public:
 
 	Category convert(const std::string& category);
 
+	void printAppetizers(std::string restaurant);
+
+	void printEntrees(std::string restaurant);
+
+	void printSpecials(std::string restaurant);
+
+	void printDrinks(std::string restaurant);
+
+	void printDesserts(std::string restaurant);
+
+	void printSides(std::string restaurant);
+
 private:
 	map<Category, vector<Menu>> theMenu;
 };

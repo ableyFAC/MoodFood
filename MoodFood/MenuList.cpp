@@ -38,3 +38,33 @@ Category MenuList::convert(const string& category)
 		cerr << "Category does not exist" << endl;
 	}
 }
+
+void MenuList::printAppetizers(string restaurant)
+{
+	
+}
+
+void MenuList::printEntrees(string restaurant)
+{
+
+}
+
+void MenuList::printSpecials(string restaurant)
+{
+
+}
+
+void MenuList::printDrinks(string restaurant)
+{
+
+}
+
+void MenuList::printDesserts(string restaurant)
+{
+
+}
+
+void MenuList::printSides(string restaurant)
+{
+
+}
