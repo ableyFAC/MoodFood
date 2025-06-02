@@ -29,3 +29,8 @@ MenuList& Restaurants::getMenuList()
 {
 	return restaurantsMenu;
 }
+
+void Restaurants::setMenuList(MenuList& menu)
+{
+	restaurantsMenu = menu;
+}

@@ -1,4 +1,5 @@
 #include "MenuList.h"
+#include "RestaurantsList.h"
 
 #include <iostream>
 #include <fstream>
@@ -9,7 +10,7 @@ using namespace std;
 
 const string MENU_FILE = "McDonalds_menu.txt";
 
-void createMenuList(ifstream& infile, MenuList& aMenu)
+void createMenuList(ifstream& infile, MenuList& aMenu, RestaurantsList& a)
 {
     string category;
     string item;
@@ -22,9 +23,13 @@ void createMenuList(ifstream& infile, MenuList& aMenu)
         auto newCat = aMenu.convert(category);
         aMenu.addMenuItem(newCat, Menu(newCat, item, price));
     }
+
+    auto it = a.findRestaurant("McDonalds");
+
+    it->second.setMenuList(aMenu);
 }
 
-void getMenuData(MenuList& aMenu)
+void getMenuData(MenuList& aMenu, RestaurantsList& a)
 {
     ifstream infile;
 
@@ -36,7 +41,7 @@ void getMenuData(MenuList& aMenu)
         exit(1);
     }
 
-    createMenuList(infile, aMenu);
+    createMenuList(infile, aMenu, a);
 
     infile.close();
 }

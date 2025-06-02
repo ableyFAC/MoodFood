@@ -10,10 +10,12 @@ class Restaurants
 {
 public:
 	
-	Restaurants() : restaurantName(""), restaurantRating(0.0){}
+	Restaurants() : restaurantName(""), restaurantRating(0.0),
+		restaurantsMenu() {} 
 
-	Restaurants(std::string newName, double newRating) : 
-		restaurantName(newName), restaurantRating(newRating) {}
+	Restaurants(std::string newName, const double& newRating, const MenuList& newMenu) : 
+		restaurantName(newName), restaurantRating(newRating), 
+			restaurantsMenu(newMenu) {}
 
 	std::string getRestaurantName() const;
 	void setRestaurantName(std::string newName);
@@ -22,6 +24,8 @@ public:
 	void setRestaurantRating(double newRating);
 
 	MenuList& getMenuList();
+
+	void setMenuList(MenuList& menu);
 
 	bool operator<(const Restaurants& aRestaurant) const;
 

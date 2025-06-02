@@ -17,7 +17,7 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& a
 void displayMenu(multimap<int, Restaurants>::iterator&, 
 	std::string restaurant, MenuList& aMenuList); 
 
-void orderAppetizers(multimap<int, Restaurants>::iterator&, MenuList& aMenuList);
+void orderAppetizers(multimap<int, Restaurants>::iterator& it);
 
 void orderEntrees(multimap<int, Restaurants>::iterator&, MenuList& aMenuList);
 

@@ -1,11 +1,11 @@
 #include "RestaurantsList.h"
 #include <iomanip>
 
-void RestaurantsList::addRestaurant(const int& mood, const string& restaurantName, const double& restaurantRating)
+void RestaurantsList::addRestaurant(const int& mood, const string& restaurantName, 
+	const double& restaurantRating, const MenuList& aMenuList)
 {
-	Restaurants tempRestaurant = Restaurants(restaurantName, restaurantRating);
 
-	resMap->emplace(mood, tempRestaurant);
+	resMap->emplace(mood, Restaurants(restaurantName, restaurantRating, aMenuList));
 
 }
 

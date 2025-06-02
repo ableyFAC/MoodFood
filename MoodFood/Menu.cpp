@@ -30,22 +30,6 @@ void Menu::setCategory(Category c)
 	category = c;
 }
 
-string Menu::getCategory(Category cat)
-{
-	switch (cat)
-	{
-	case Category::Appetizers: return "Entree";
-	case Category::Desserts: return "Desserts";
-	case Category::Drinks: return "Drinks";
-	case Category::Entrees: return "Entree";
-	case Category::Sides: return "Sides";
-	case Category::Specials: return "Specials";
-
-	default:
-		return "Unknown category";
-	}
-}
-
 bool Menu::operator<(const Menu& aMenu) const
 {
 	return item < aMenu.item;

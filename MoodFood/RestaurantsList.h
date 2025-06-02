@@ -17,7 +17,7 @@ public:
 	RestaurantsList() : resMap(new multimap<int, Restaurants>) {};
 
 	void addRestaurant(const int& mood, const std::string& restaurantName, 
-		const double& restaurantRating);
+		const double& restaurantRating, const MenuList& aMenuList);
 
 	void displayRestaurants(const int& mood);
 

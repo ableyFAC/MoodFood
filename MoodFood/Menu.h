@@ -12,15 +12,18 @@ enum class Category
 	Drinks,
 	Entrees,
 	Sides,
-	Specials
+	Specials,
+	Unknown
 };
 
 class Menu
 {
 	public:
 
+		Menu() : category(Category::Unknown), item(""), price(0.0) {}
+
 		Menu(Category c, std::string newItem, double newPrice) :
-			item(newItem), price(newPrice), category(c) {}
+			category(c), item(newItem), price(newPrice) {}
 
 		std::string getItem();
 
@@ -33,8 +36,6 @@ class Menu
 		void setPrice(double newPrice);
 
 		void setCategory(Category c);
-
-		std::string getCategory(Category cat);
 
 		bool operator<(const Menu& aMenu) const;
 

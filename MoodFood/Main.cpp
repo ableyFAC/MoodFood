@@ -16,13 +16,61 @@ using namespace std;
 int main()
 {
 
-    RestaurantsList res1;
-    getRestaurantData(res1);
+    // testing resMap and theMenu map
 
-    MenuList men1;
 
-    intro();
+    MenuList mcDonaldsMenu;
+    mcDonaldsMenu.addMenuItem(Category::Appetizers, Menu(Category::Appetizers, "Fries", 1.49));
+    mcDonaldsMenu.addMenuItem(Category::Entrees, Menu(Category::Entrees, "BigMac", 4.99));
+    mcDonaldsMenu.addMenuItem(Category::Desserts, Menu(Category::Desserts, "ApplePie", 1.99));
 
-    userMood(res1, men1);
+    // Step 2: Create a Restaurant
+    Restaurants mcd("McDonalds", 4.5, mcDonaldsMenu);
+
+    // Step 3: Link the menu to the restaurant
+    mcd.setMenuList(mcDonaldsMenu);
+
+    // Step 4: Insert the restaurant into RestaurantsList
+    RestaurantsList restaurantList;
+    restaurantList.addRestaurant(1, "McDonalds", 4.5, mcDonaldsMenu);  // Assuming key = mood
+
+    MenuList OlaMenu;
+    OlaMenu.addMenuItem(Category::Appetizers, Menu(Category::Appetizers, "Nachos", 1.49));
+    OlaMenu.addMenuItem(Category::Entrees, Menu(Category::Entrees, "StreetTacos", 4.99));
+    OlaMenu.addMenuItem(Category::Desserts, Menu(Category::Desserts, "Flan", 1.99));
+
+    // Step 2: Create a Restaurant
+    Restaurants ola("Ola", 4.0, OlaMenu);
+
+    // Step 3: Link the menu to the restaurant
+    ola.setMenuList(OlaMenu);
+
+    // Step 4: Insert the restaurant into RestaurantsList
+    restaurantList.addRestaurant(1, "Ola", 4.0, OlaMenu);  // Assuming key = mood
+
+
+    auto it = restaurantList.findRestaurant("Ola");
+
+    if (it != restaurantList.getEndIterator())
+    {
+        cout << "Restaurant found and it's name is " << it->second.getRestaurantName();
+        // GOOD, the restaurant exists in the map
+
+        orderAppetizers(it);
+        // IT WORKS :DDD
+    }
+    else
+    {
+        cout << "Restaurant not found.\n";
+    }
+
+    //RestaurantsList res1;
+    //getRestaurantData(res1);
+
+    //MenuList men1;
+
+    //intro();
+
+    //userMood(res1, men1);
     
 }

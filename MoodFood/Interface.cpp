@@ -108,7 +108,7 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 		switch (selection)
 		{
 			case 1: 
-				orderAppetizers(it, aMenuList);
+				orderAppetizers(it);
 				break;
 			case 2:
 				orderEntrees(it, aMenuList);
@@ -131,7 +131,7 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 	}
 }
 
-void orderAppetizers(multimap<int, Restaurants>::iterator& it, MenuList& aMenuList)
+void orderAppetizers(multimap<int, Restaurants>::iterator& it)
 {
 	cout << "Appetizers\n"
 		<< "------------\n";

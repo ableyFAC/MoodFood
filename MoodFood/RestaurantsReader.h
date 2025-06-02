@@ -18,10 +18,10 @@ void createRestaurantList(ifstream& infile, RestaurantsList& aRestaurant)
     string restaurant;
     double rating = 0.0;
 
-    while (infile >> mood >> restaurant >> rating)
-    {
-        aRestaurant.addRestaurant(mood, restaurant, rating);
-    }
+    //while (infile >> mood >> restaurant >> rating)
+    //{
+        //aRestaurant.addRestaurant(mood, restaurant, rating);
+    //}
 }
 
 void getRestaurantData(RestaurantsList& aRestaurant)

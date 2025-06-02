@@ -8,6 +8,7 @@ using namespace std;
 void MenuList::addMenuItem(Category cat, const Menu& item)
 {
 	theMenu[cat].push_back(item);
+
 }
 
 Category MenuList::convert(const string& category)
@@ -39,10 +40,20 @@ Category MenuList::convert(const string& category)
 	else
 	{
 		cerr << "Category does not exist" << endl;
+		return Category::Unknown;
 	}
 }
 
 const vector<Menu>& MenuList::getItemsInCategory(Category category) const
 {
-	return theMenu.at(category);
+	auto it = theMenu.find(category);
+
+	if (it != theMenu.end())
+	{
+		return theMenu.at(category);
+	}
+	else
+	{
+		cerr << "Category not found" << endl;
+	}
 }
