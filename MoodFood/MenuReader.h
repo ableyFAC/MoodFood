@@ -9,7 +9,7 @@ using namespace std;
 
 const string MENU_FILE = "McDonalds_menu.txt";
 
-void createRestaurantList(ifstream& infile, MenuList& aMenu)
+void createMenuList(ifstream& infile, MenuList& aMenu)
 {
     string category;
     string item;
@@ -24,7 +24,7 @@ void createRestaurantList(ifstream& infile, MenuList& aMenu)
     }
 }
 
-void getRestaurantData(MenuList& aMenu)
+void getMenuData(MenuList& aMenu)
 {
     ifstream infile;
 
@@ -36,7 +36,7 @@ void getRestaurantData(MenuList& aMenu)
         exit(1);
     }
 
-    createRestaurantList(infile, aMenu);
+    createMenuList(infile, aMenu);
 
     infile.close();
 }

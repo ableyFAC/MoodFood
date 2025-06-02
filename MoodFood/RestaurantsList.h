@@ -1,7 +1,6 @@
 #ifndef RESTAURANTSLIST_H
 #define RESTAURANTSLIST_H
 
-
 #include "Restaurants.h"
 #include <map>
 #include <algorithm>
@@ -13,6 +12,7 @@ using namespace std;
 // Restaurants object holds the name and such
 class RestaurantsList
 {
+	friend class MenuList;
 public:
 	RestaurantsList() : resMap(new multimap<int, Restaurants>) {};
 
@@ -21,7 +21,11 @@ public:
 
 	void displayRestaurants(const int& mood);
 
-	bool findRestaurant(const std::string& restaurant);
+	multimap<int, Restaurants>::iterator findRestaurant(const std::string& restaurant);
+
+	auto getEndIterator() {
+		return resMap->end();
+	};
 
 	void printAll();
 

@@ -19,8 +19,10 @@ int main()
     RestaurantsList res1;
     getRestaurantData(res1);
 
+    MenuList men1;
+
     intro();
 
-    userMood(res1);
+    userMood(res1, men1);
     
 }

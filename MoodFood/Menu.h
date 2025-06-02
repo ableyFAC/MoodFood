@@ -1,7 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "RestaurantsList.h"
 #include <string>
 
 using namespace std;
@@ -36,6 +35,8 @@ class Menu
 		void setCategory(Category c);
 
 		std::string getCategory(Category cat);
+
+		bool operator<(const Menu& aMenu) const;
 
 	private:
 		std::string item;

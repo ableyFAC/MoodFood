@@ -1,7 +1,6 @@
 #ifndef MENULIST_H
 #define MENULIST_H
 
-#include "RestaurantsList.h"
 #include "Menu.h"
 
 #include <map>
@@ -17,17 +16,19 @@ public:
 
 	Category convert(const std::string& category);
 
-	void printAppetizers(std::string restaurant);
+	//void printAppetizers(multimap<int, Restaurants>::iterator&);
 
-	void printEntrees(std::string restaurant);
+	//void printEntrees(std::string restaurant);
 
-	void printSpecials(std::string restaurant);
+	//void printSpecials(std::string restaurant);
 
-	void printDrinks(std::string restaurant);
+	//void printDrinks(std::string restaurant);
 
-	void printDesserts(std::string restaurant);
+	//void printDesserts(std::string restaurant);
 
-	void printSides(std::string restaurant);
+	//void printSides(std::string restaurant);
+
+	const vector<Menu>& getItemsInCategory(Category category) const;
 
 private:
 	map<Category, vector<Menu>> theMenu;

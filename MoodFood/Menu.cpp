@@ -45,3 +45,8 @@ string Menu::getCategory(Category cat)
 		return "Unknown category";
 	}
 }
+
+bool Menu::operator<(const Menu& aMenu) const
+{
+	return item < aMenu.item;
+}

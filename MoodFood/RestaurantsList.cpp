@@ -21,7 +21,7 @@ void RestaurantsList::displayRestaurants(const int& mood)
 	}
 }
 
-bool RestaurantsList::findRestaurant(const string& restaurant)
+multimap<int, Restaurants>::iterator RestaurantsList::findRestaurant(const string& restaurant)
 {
 	auto begin = resMap->begin();
 	auto end = resMap->end();
@@ -30,7 +30,7 @@ bool RestaurantsList::findRestaurant(const string& restaurant)
 		[restaurant](const auto& temp)
 		{return temp.second.getRestaurantName() == restaurant;});
 
-	return result != end;
+	return result;
 }
 
 void RestaurantsList::printAll()

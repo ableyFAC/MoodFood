@@ -24,3 +24,8 @@ bool Restaurants::operator<(const Restaurants& aRestaurant) const
 {
 	return restaurantName < aRestaurant.restaurantName;
 }
+
+MenuList& Restaurants::getMenuList()
+{
+	return restaurantsMenu;
+}

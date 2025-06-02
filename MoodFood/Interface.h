@@ -14,11 +14,12 @@ void userMood(RestaurantsList& aRestaurant, MenuList& aMenuList);
 
 void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& aMenuList);
 
-void displayMenu(RestaurantsList& aRestaurant, std::string restaurant, MenuList& aMenuList); 
+void displayMenu(multimap<int, Restaurants>::iterator&, 
+	std::string restaurant, MenuList& aMenuList); 
 
-void orderAppetizers(std::string restaurant, MenuList& aMenuList);
+void orderAppetizers(multimap<int, Restaurants>::iterator&, MenuList& aMenuList);
 
-void orderEntrees(std::string restaurant, MenuList& aMenuList);
+void orderEntrees(multimap<int, Restaurants>::iterator&, MenuList& aMenuList);
 
 void orderSpecials(std::string restaurant, MenuList& aMenuList);
 

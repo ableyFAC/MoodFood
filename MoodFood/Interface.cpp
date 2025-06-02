@@ -58,12 +58,16 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& a
 	bool found = false;
 	string selection;
 
+	multimap<int, Restaurants>::iterator restaurantIt;
+
 	while (!found)
 	{
 		cout << "Please select a restaurant: ";
 		cin >> selection;
 
-		if (aRestaurant.findRestaurant(selection))
+		restaurantIt = aRestaurant.findRestaurant(selection);
+
+		if (restaurantIt != aRestaurant.getEndIterator())
 		{
 			found = true;
 		}
@@ -77,11 +81,12 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& a
 	{
 		cout << "\nSending you to " << selection << "...\n";
 		cout << divider << endl;
-		displayMenu(aRestaurant, selection, aMenuList);
+		displayMenu(restaurantIt, selection, aMenuList);
 	}
 }
 
-void displayMenu(RestaurantsList& aRestaurant, string restaurant, MenuList& aMenuList)
+void displayMenu(multimap<int, Restaurants>::iterator& it, 
+	string restaurant, MenuList& aMenuList)
 {
 	cout << "Welcome to " << restaurant << "!\n"
 		<< "What would you like to order?" << endl;
@@ -103,10 +108,10 @@ void displayMenu(RestaurantsList& aRestaurant, string restaurant, MenuList& aMen
 		switch (selection)
 		{
 			case 1: 
-				orderAppetizers(restaurant, aMenuList);
+				orderAppetizers(it, aMenuList);
 				break;
 			case 2:
-				orderEntrees(restaurant, aMenuList);
+				orderEntrees(it, aMenuList);
 				break;
 			case 3:
 				orderSpecials(restaurant, aMenuList);
@@ -126,19 +131,36 @@ void displayMenu(RestaurantsList& aRestaurant, string restaurant, MenuList& aMen
 	}
 }
 
-void orderAppetizers(string restaurant, MenuList& aMenuList)
+void orderAppetizers(multimap<int, Restaurants>::iterator& it, MenuList& aMenuList)
 {
 	cout << "Appetizers\n"
 		<< "------------\n";
 
-	aMenuList.printAppetizers(restaurant);
+	MenuList& menu = it->second.getMenuList();
 
+	vector<Menu> tempVector = menu.getItemsInCategory(Category::Appetizers);
 
+	for (int i = 0; i < tempVector.size(); ++i)
+	{
+		cout << "\t" << tempVector[i].getItem() << " - $"
+			<< tempVector[i].getPrice() << endl;
+	}
 }
 
-void orderEntrees(string restaurant, MenuList& aMenuList)
+void orderEntrees(multimap<int, Restaurants>::iterator& it, MenuList& aMenuList)
 {
-	cout << "Entrees page";
+	cout << "Entrees\n"
+		<< "------------\n";
+
+	MenuList& menu = it->second.getMenuList();
+
+	vector<Menu> tempVector = menu.getItemsInCategory(Category::Entrees);
+
+	for (int i = 0; i < tempVector.size(); ++i)
+	{
+		cout << "\t" << tempVector.at(i).getItem() << " - $"
+			<< tempVector.at(i).getPrice() << endl;
+	}
 }
 
 void orderSpecials(string restaurant, MenuList& aMenuList)

@@ -1,5 +1,8 @@
 #include "MenuList.h"
+#include <iostream>
 #include <iomanip>
+
+using namespace std;
 
 
 void MenuList::addMenuItem(Category cat, const Menu& item)
@@ -39,32 +42,7 @@ Category MenuList::convert(const string& category)
 	}
 }
 
-void MenuList::printAppetizers(string restaurant)
+const vector<Menu>& MenuList::getItemsInCategory(Category category) const
 {
-	
-}
-
-void MenuList::printEntrees(string restaurant)
-{
-
-}
-
-void MenuList::printSpecials(string restaurant)
-{
-
-}
-
-void MenuList::printDrinks(string restaurant)
-{
-
-}
-
-void MenuList::printDesserts(string restaurant)
-{
-
-}
-
-void MenuList::printSides(string restaurant)
-{
-
+	return theMenu.at(category);
 }
