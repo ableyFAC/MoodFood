@@ -1,0 +1,10 @@
+Appetizers SourdoughBread 3.99
+Appetizers GarlicBread 5.99
+Desserts OatmealRaisinCookie 3.99
+Desserts LemonPoundcake 5.99
+Drinks CaramelMilkshake 3.99
+Drinks FountainDrink 2.99
+Entrees ClamChowderBreadBowl 6.99
+Entrees GrilledCheeseWithBacon 7.99
+Sides HouseSoup 4.99
+Sides HouseSalad 3.99

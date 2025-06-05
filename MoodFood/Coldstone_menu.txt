@@ -1,0 +1,6 @@
+Drinks MintChocolateChipMilkshake 4.99
+Drinks OreoMilkshake 5.99
+Desserts PistachioIceCream 3.99
+Desserts CookieDoughIceCream 3.99
+Specials IceCreamCake 9.99
+Specials IceCreamSandwich 4.99

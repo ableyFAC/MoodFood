@@ -1,0 +1,6 @@
+Drinks FountainDrink 3.99
+Drinks Lemonade 4.99
+Entrees ChickenAndWaffles 8.99
+Entrees ChickenTenderMeal 7.99
+Entrees ChickenSandwich 8.99
+Sides Fries 3.99

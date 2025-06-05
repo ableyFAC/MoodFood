@@ -1,0 +1,8 @@
+Drinks StrawberryMilkshake 3.99
+Drinks VanillaMilkshake 2.99
+Dinrks ChocolateMilkshake 2.99
+Desserts ChocolateChip 4.99
+Desserts PeanutButter 3.99
+Desserts DarkChocolate 2.99
+Specials CookieMonster 5.99
+Specials BirthdayCake 4.99

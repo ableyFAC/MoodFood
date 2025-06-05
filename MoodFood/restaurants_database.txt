@@ -1,9 +1,10 @@
-2 McDonalds 4.6
 3 Afters 4.0
-1 Boudin's 3.9
-2 Popeye's 4.5
+1 Boudins 3.9
+4 Bruxie 4.3
 4 Coldstone 3.7
 1 DinTaiFung 4.7
-4 Bruxie 4.3
 3 MarugameUdon 4.0
+2 McDonalds 4.6
 1 Ola 4.2
+2 Popeyes 4.5
+

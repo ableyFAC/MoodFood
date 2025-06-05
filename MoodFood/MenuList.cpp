@@ -11,7 +11,7 @@ void MenuList::addMenuItem(Category cat, const Menu& item)
 
 }
 
-Category MenuList::convert(const string& category)
+Category MenuList::stringToEnum(const string& category)
 {
 	if (category == "Appetizers")
 	{
@@ -41,6 +41,39 @@ Category MenuList::convert(const string& category)
 	{
 		cerr << "Category does not exist" << endl;
 		return Category::Unknown;
+	}
+}
+
+string MenuList::enumToString(const Category& category)
+{
+	if (category == Category::Appetizers)
+	{
+		return "Appetizers";
+	}
+	else if (category == Category::Desserts)
+	{
+		return "Desserts";
+	}
+	else if (category == Category::Drinks)
+	{
+		return "Drinks";
+	}
+	else if (category == Category::Entrees)
+	{
+		return "Entrees";
+	}
+	else if (category == Category::Sides)
+	{
+		return "Sides";
+	}
+	else if (category == Category::Specials)
+	{
+		return "Specials";
+	}
+	else
+	{
+		cerr << "Category does not exist" << endl;
+		return "Unknown";
 	}
 }
 

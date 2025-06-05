@@ -21,7 +21,7 @@ void intro()
 		<< "\t (4) Not that great :(\n" << endl;
 }
 
-void userMood(RestaurantsList& aRestaurant, MenuList& aMenuList)
+void userMood(RestaurantsList& aRestaurant)
 {
 
 	int mood = 0;
@@ -47,10 +47,10 @@ void userMood(RestaurantsList& aRestaurant, MenuList& aMenuList)
 	}
 	cout << endl;
 
-	chooseRestaurant(mood, aRestaurant, aMenuList);
+	chooseRestaurant(mood, aRestaurant);
 }
 
-void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& aMenuList)
+void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 {
 	aRestaurant.displayRestaurants(mood);
 	cout << endl;
@@ -81,12 +81,12 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& a
 	{
 		cout << "\nSending you to " << selection << "...\n";
 		cout << divider << endl;
-		displayMenu(restaurantIt, selection, aMenuList);
+		displayMenu(restaurantIt, selection);
 	}
 }
 
 void displayMenu(multimap<int, Restaurants>::iterator& it, 
-	string restaurant, MenuList& aMenuList)
+	string restaurant)
 {
 	cout << "Welcome to " << restaurant << "!\n"
 		<< "What would you like to order?" << endl;
@@ -108,22 +108,22 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 		switch (selection)
 		{
 			case 1: 
-				orderAppetizers(it);
+				printByCategory(it, Category::Appetizers);
 				break;
 			case 2:
-				orderEntrees(it, aMenuList);
+				printByCategory(it, Category::Entrees);
 				break;
 			case 3:
-				orderSpecials(restaurant, aMenuList);
+				printByCategory(it, Category::Specials);
 				break;
 			case 4:
-				orderDesserts(restaurant, aMenuList);
+				printByCategory(it, Category::Desserts);
 				break;
 			case 5:
-				orderSides(restaurant, aMenuList);
+				printByCategory(it, Category::Sides);
 				break;
 			case 6:
-				orderDrinks(restaurant, aMenuList);
+				printByCategory(it, Category::Drinks);
 				break;
 			case 7:
 				total();
@@ -131,14 +131,17 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 	}
 }
 
-void orderAppetizers(multimap<int, Restaurants>::iterator& it)
+void printByCategory(multimap<int, Restaurants>::iterator& it, Category category)
 {
-	cout << "Appetizers\n"
-		<< "------------\n";
+	MenuList temp;
+
+	string categoryName = temp.enumToString(category);
+	cout << categoryName << "\n" << "------------ \n";
 
 	MenuList& menu = it->second.getMenuList();
 
-	vector<Menu> tempVector = menu.getItemsInCategory(Category::Appetizers);
+	vector<Menu> tempVector = menu.getItemsInCategory(category);
+	sort(tempVector.begin(), tempVector.end());
 
 	for (int i = 0; i < tempVector.size(); ++i)
 	{
@@ -147,43 +150,7 @@ void orderAppetizers(multimap<int, Restaurants>::iterator& it)
 	}
 }
 
-void orderEntrees(multimap<int, Restaurants>::iterator& it, MenuList& aMenuList)
-{
-	cout << "Entrees\n"
-		<< "------------\n";
-
-	MenuList& menu = it->second.getMenuList();
-
-	vector<Menu> tempVector = menu.getItemsInCategory(Category::Entrees);
-
-	for (int i = 0; i < tempVector.size(); ++i)
-	{
-		cout << "\t" << tempVector.at(i).getItem() << " - $"
-			<< tempVector.at(i).getPrice() << endl;
-	}
-}
-
-void orderSpecials(string restaurant, MenuList& aMenuList)
-{
-	cout << "Specials page";
-}
-
-void orderDesserts(string restaurant, MenuList& aMenuList)
-{
-	cout << "Desserts page";
-}
-
-void orderSides(string restaurant, MenuList& aMenuList)
-{
-	cout << "Sides page";
-}
-
-void orderDrinks(string restaurant, MenuList& aMenuList)
-{
-	cout << "Drinks page";
-}
-
 void total()
 {
-	cout << "the end" << endl;
+	cout << "The end!" << endl;
 }

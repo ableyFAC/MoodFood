@@ -1,0 +1,14 @@
+Appetizers SeasonedPork 5.99
+Appetizers CucumberSalad 4.99
+Desserts ChocolateDumplings 6.99
+Desserts SweetTaroBuns 6.99
+Drinks MatchaMilkTea 4.99
+Drinks PeachIcedTea 3.99
+Entrees PorkKurabutaNoodles 7.99
+Entrees ShrimpFriedRice 8.99
+Sides StringBeans 5.99
+Sides ChickenDumplings 6.99
+Specials BeefTenderloin 13.99
+Specials TruffleXiaoLongBao 10.99
+
+

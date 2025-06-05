@@ -139,8 +139,7 @@
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuList.h" />
-    <ClInclude Include="MenuReader.h" />
-    <ClInclude Include="RestaurantsReader.h" />
+    <ClInclude Include="FileReaders.h" />
     <ClInclude Include="Restaurants.h" />
     <ClInclude Include="RestaurantsList.h" />
   </ItemGroup>
@@ -152,8 +151,9 @@
     <Text Include="DinTaiFung_menu.txt" />
     <Text Include="MarugameUdon_menu.txt" />
     <Text Include="McDonalds_menu.txt" />
+    <Text Include="menu_database.txt" />
     <Text Include="Ola_menu.txt" />
-    <Text Include="Popeye%27s_menu.txt" />
+    <Text Include="Popeyes_menu.txt" />
     <Text Include="restaurants_database.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -6,3 +6,4 @@ Desserts VanillaSoftServe 2.49
 Desserts ApplePie 1.99
 Entrees McFish 5.99
 Specials BTSMeal 9.99
+Specials MinecraftKidsMeal 7.99

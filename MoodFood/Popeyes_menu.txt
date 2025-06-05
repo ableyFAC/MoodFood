@@ -1,0 +1,8 @@
+Drinks FountainDrink 1.99
+Drinks HouseIcedTea 2.99
+Entrees 5PieceTenders 7.99
+Entrees ChickenSandwich 6.99
+Sides CajunFries 3.99
+Sides Biscuits 2.99
+Specials TendersFamilyMeal 10.99
+Specials ChickenWrap 7.99

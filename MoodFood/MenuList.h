@@ -14,19 +14,9 @@ public:
 
 	void addMenuItem(Category cat, const Menu& item);
 
-	Category convert(const std::string& category);
+	Category stringToEnum(const std::string& category);
 
-	//void printAppetizers(multimap<int, Restaurants>::iterator&);
-
-	//void printEntrees(std::string restaurant);
-
-	//void printSpecials(std::string restaurant);
-
-	//void printDrinks(std::string restaurant);
-
-	//void printDesserts(std::string restaurant);
-
-	//void printSides(std::string restaurant);
+	std::string enumToString(const Category& category);
 
 	const vector<Menu>& getItemsInCategory(Category category) const;
 

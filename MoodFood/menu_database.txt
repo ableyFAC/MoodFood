@@ -1,0 +1,9 @@
+Afters_menu.txt
+Boudins_menu.txt
+Bruxie_menu.txt
+Coldstone_menu.txt
+DinTaiFung_menu.txt
+MarugameUdon_menu.txt
+McDonalds_menu.txt
+Ola_menu.txt
+Popeyes_menu.txt

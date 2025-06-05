@@ -9,13 +9,13 @@
 // - two separate files/ .cpp files depending on the mood chosen
 
 #include "Interface.h"
-#include "RestaurantsReader.h"
+#include "FileReaders.h"
 
 using namespace std;
 
 int main()
 {
-
+    /*
     // testing resMap and theMenu map
 
 
@@ -36,6 +36,8 @@ int main()
 
     MenuList OlaMenu;
     OlaMenu.addMenuItem(Category::Appetizers, Menu(Category::Appetizers, "Nachos", 1.49));
+    OlaMenu.addMenuItem(Category::Appetizers, Menu(Category::Appetizers, "StreetCorn", 3.49));
+    OlaMenu.addMenuItem(Category::Appetizers, Menu(Category::Appetizers, "ChickenSalad", 2.49));
     OlaMenu.addMenuItem(Category::Entrees, Menu(Category::Entrees, "StreetTacos", 4.99));
     OlaMenu.addMenuItem(Category::Desserts, Menu(Category::Desserts, "Flan", 1.99));
 
@@ -53,7 +55,7 @@ int main()
 
     if (it != restaurantList.getEndIterator())
     {
-        cout << "Restaurant found and it's name is " << it->second.getRestaurantName();
+        cout << "Restaurant found and it's name is " << it->second.getRestaurantName() << endl;
         // GOOD, the restaurant exists in the map
 
         orderAppetizers(it);
@@ -63,14 +65,13 @@ int main()
     {
         cout << "Restaurant not found.\n";
     }
+    */
 
-    //RestaurantsList res1;
-    //getRestaurantData(res1);
+    RestaurantsList res1;
+    getFileData(res1);
 
-    //MenuList men1;
+    intro();
 
-    //intro();
-
-    //userMood(res1, men1);
+    userMood(res1);
     
 }

@@ -1,0 +1,10 @@
+Appetizers ShrimpTempura 3.99
+Appetizers SpamMusubi 4.99
+Drinks LycheeRamune 3.99
+Drinks Water 1.99
+Entrees BeefCurryUdon 7.99
+Entrees TonkotsuUdon 6.99
+Sides BKSauce 0.99
+Sides SoySace 0.99
+Specials ChickenKatsuRiceBowl 12.99
+Specials TanTanUdon 8.99

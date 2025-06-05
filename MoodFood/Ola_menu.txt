@@ -1,0 +1,8 @@
+Appetizers EloteCorn 5.99
+Appetizers ChipsAndSalsa 3.99
+Drinks HouseTequila 6.99
+Drinks HouseLemonade 4.99
+Entrees BeefEnchiladas 7.99
+Entrees AgaveSalmon 8.99
+Specials FishTacoPlate 10.99
+Specials RibeyeFajitas 11.99

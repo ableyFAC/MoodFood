@@ -10,24 +10,14 @@ using namespace std;
 
 void intro();
 
-void userMood(RestaurantsList& aRestaurant, MenuList& aMenuList);
+void userMood(RestaurantsList& aRestaurant);
 
-void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant, MenuList& aMenuList);
+void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant);
 
-void displayMenu(multimap<int, Restaurants>::iterator&, 
-	std::string restaurant, MenuList& aMenuList); 
+void displayMenu(multimap<int, Restaurants>::iterator& it, 
+	std::string restaurant); 
 
-void orderAppetizers(multimap<int, Restaurants>::iterator& it);
-
-void orderEntrees(multimap<int, Restaurants>::iterator&, MenuList& aMenuList);
-
-void orderSpecials(std::string restaurant, MenuList& aMenuList);
-
-void orderDesserts(std::string restaurant, MenuList& aMenuList);
-
-void orderSides(std::string restaurant, MenuList& aMenuList);
-
-void orderDrinks(std::string restaurant, MenuList& aMenuList);
+void printByCategory(multimap<int, Restaurants>::iterator& it, Category category);
 
 void total();
 #endif
