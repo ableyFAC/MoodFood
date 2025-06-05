@@ -39,7 +39,6 @@ Category MenuList::stringToEnum(const string& category)
 	}
 	else
 	{
-		cerr << "Category does not exist" << endl;
 		return Category::Unknown;
 	}
 }
@@ -72,7 +71,6 @@ string MenuList::enumToString(const Category& category)
 	}
 	else
 	{
-		cerr << "Category does not exist" << endl;
 		return "Unknown";
 	}
 }

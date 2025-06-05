@@ -141,13 +141,15 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 	MenuList& menu = it->second.getMenuList();
 
 	vector<Menu> tempVector = menu.getItemsInCategory(category);
+
 	sort(tempVector.begin(), tempVector.end());
 
 	for (int i = 0; i < tempVector.size(); ++i)
 	{
 		cout << "\t" << tempVector[i].getItem() << " - $"
-			<< tempVector[i].getPrice() << endl;
+			<< fixed << setprecision(2) << tempVector[i].getPrice() << endl;
 	}
+	
 }
 
 void total()

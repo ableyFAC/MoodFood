@@ -15,49 +15,53 @@ const string MENU_DATABASE = "menu_database.txt";
 
 void createRestaurantAndMenuList(ifstream& restaurantFile, ifstream& menuDatabase, RestaurantsList& aRestaurantList)
 {
+    // first:  CREATE THE RESTAURANTLIST MAP
+    int mood = 0;
+    string restaurant;
+    double rating = 0.0;
+    MenuList tempForNow;
 
+    while (restaurantFile >> mood >> restaurant >> rating)
+    {
+        aRestaurantList.addRestaurant(mood, restaurant, rating, tempForNow);
+    }
+
+    // then:  CREATE THE MENULIST OBJECTS
     vector<string> menuDatabaseVector;
-
     string line;
 
     while (getline(menuDatabase, line))
     {
         menuDatabaseVector.push_back(line);
-        // should populate that vector with all of the menus_txt
+        // CONFIRMED VIA FOR LOOP: populates vector with all of the menus_txt
         // ex) Afters_menu.txt, Boudins_menu.txt,...
     }
 
-    for (const string& file : menuDatabaseVector)
+    for (int i = 0; i < menuDatabaseVector.size(); ++i)
     {
-        ifstream temp;
-        temp.open(file);
+        ifstream infile;
+        string temp = menuDatabaseVector.at(i);
+        infile.open(temp);
 
         string category;
         string item;
-        double price = 0;
+        double price = 0.0;
 
         MenuList aMenu; // initialized after while loop... say a MenuList was created for Afters - now connect that to the Restaurant Class
 
-        while (temp >> category >> item >> price)
+        while (infile >> category >> item >> price)
         {
-
-            auto newCat = aMenu.stringToEnum(category);
-            aMenu.addMenuItem(newCat, Menu(newCat, item, price)); // creates a MenuList object
+            Category newCat = aMenu.stringToEnum(category);
+            aMenu.addMenuItem(newCat, Menu(newCat, item, price));
         }
 
-        // use the MenuList aMenu to initialize a Restaurant Object - needs the name and rating of the restaurant
+        // finally: CONNECT THE CORRESPONDING MENULIST OBJECT WITH RESTAURANT
 
+        string restaurantName = temp.substr(0, temp.find("_"));
 
-        int mood = 0;
-        string restaurant;
-        double rating = 0.0;
+        auto it = aRestaurantList.findRestaurant(restaurantName);
 
-
-        while (restaurantFile >> mood >> restaurant >> rating)
-        {
-            aRestaurantList.addRestaurant(mood, restaurant, rating, aMenu);
-        }
-
+        it->second.setMenuList(aMenu);
     }
 }
 
@@ -83,6 +87,7 @@ void getFileData(RestaurantsList& aRestaurantList)
         exit(1);
     }
 
+
     createRestaurantAndMenuList(restaurantFile, menuDatabase, aRestaurantList);
 
     restaurantFile.close();
@@ -90,73 +95,3 @@ void getFileData(RestaurantsList& aRestaurantList)
 
 }
 
-
-
-/*
-void createMenuList(ifstream& infile, MenuList& aMenu, RestaurantsList& a)
-{
-    string category;
-    string item;
-    double price = 0;
-
-    // just testing the mcdonalds reader
-
-    while (infile >> category >> item >> price)
-    {
-        auto newCat = aMenu.convert(category);
-        aMenu.addMenuItem(newCat, Menu(newCat, item, price));
-    }
-
-    auto it = a.findRestaurant("McDonalds");
-
-    it->second.setMenuList(aMenu);
-}
-
-void getMenuData(MenuList& aMenu, RestaurantsList& a)
-{
-    ifstream infile;
-
-    infile.open(MENU_FILE);
-
-    if (!infile)
-    {
-        cerr << MENU_FILE << " does not exist." << endl;
-        exit(1);
-    }
-
-    createMenuList(infile, aMenu, a);
-
-    infile.close();
-}
-
-void createRestaurantList(ifstream& infile, RestaurantsList& aRestaurant)
-{
-    int mood = 0;
-    string restaurant;
-    double rating = 0.0;
-
-    // NEXT STEP IS TO TWEAK THIS READ FILE (by adding a MenuList object)
-
-    //while (infile >> mood >> restaurant >> rating)
-    //{
-        //aRestaurant.addRestaurant(mood, restaurant, rating);
-    //}
-}
-
-void getRestaurantData(RestaurantsList& aRestaurant)
-{
-    ifstream infile;
-
-    infile.open(RESTAURANTS_FILE);
-
-    if (!infile)
-    {
-        cerr << RESTAURANTS_FILE << " does not exist." << endl;
-        exit(1);
-    }
-
-    createRestaurantList(infile, aRestaurant);
-
-    infile.close();
-}
-*/
