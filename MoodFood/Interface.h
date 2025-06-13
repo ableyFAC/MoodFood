@@ -18,7 +18,9 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant);
 void displayMenu(multimap<int, Restaurants>::iterator& it, 
 	std::string restaurant); 
 
-void printByCategory(multimap<int, Restaurants>::iterator& it, Category category);
+void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
+
+void order(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void total();
 #endif

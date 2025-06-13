@@ -1,11 +1,11 @@
 #include "Interface.h"
 #include <chrono>
-#include <queue>
+#include <stack>
 
 using namespace std;
 
-
 string divider(51, '-');
+vector<Menu> orderVector = {};
 
 
 void intro()
@@ -105,33 +105,39 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 	{
 		cin >> selection;
 
-		switch (selection)
+		if (selection == 1)
 		{
-			case 1: 
-				printByCategory(it, Category::Appetizers);
-				break;
-			case 2:
-				printByCategory(it, Category::Entrees);
-				break;
-			case 3:
-				printByCategory(it, Category::Specials);
-				break;
-			case 4:
-				printByCategory(it, Category::Desserts);
-				break;
-			case 5:
-				printByCategory(it, Category::Sides);
-				break;
-			case 6:
-				printByCategory(it, Category::Drinks);
-				break;
-			case 7:
-				total();
+			printByCategory(it, Category::Appetizers, restaurant);
 		}
+		else if (selection == 2)
+		{
+			printByCategory(it, Category::Entrees, restaurant);
+		}
+		else if (selection == 3)
+		{
+			printByCategory(it, Category::Specials, restaurant);
+		}
+		else if (selection == 4)
+		{
+			printByCategory(it, Category::Desserts, restaurant);
+		}
+		else if (selection == 5)
+		{
+			printByCategory(it, Category::Sides, restaurant);
+		}
+		else if (selection == 6)
+		{
+			printByCategory(it, Category::Drinks, restaurant);
+		}
+	}
+
+	if (selection == 7)
+	{
+		total();
 	}
 }
 
-void printByCategory(multimap<int, Restaurants>::iterator& it, Category category)
+void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, string restaurant)
 {
 	MenuList temp;
 
@@ -140,8 +146,14 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 
 	MenuList& menu = it->second.getMenuList();
 
-	vector<Menu> tempVector = menu.getItemsInCategory(category);
+	vector<Menu> tempVector = menu.getItemsInCategory(category); // prints "Not found" if applicable
 
+	if (tempVector.size() == 0)
+	{
+		cout << "Sorry!  We do not carry any " << categoryName << ". We will return you to the main page.\n" << endl;
+		return;
+	}
+	
 	sort(tempVector.begin(), tempVector.end());
 
 	for (int i = 0; i < tempVector.size(); ++i)
@@ -149,10 +161,57 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 		cout << "\t" << tempVector[i].getItem() << " - $"
 			<< fixed << setprecision(2) << tempVector[i].getPrice() << endl;
 	}
+		
+	order(it, category, restaurant);
+	
+}
+
+void order(multimap<int, Restaurants>::iterator& it, Category category, string restaurant)
+{
+
+	MenuList& menu = it->second.getMenuList();
+	vector<Menu> tempVector = menu.getItemsInCategory(category);
+	
+	string option;
+
+	while (true)
+	{
+		cout << "\n	Please make an order (enter 'n' when done with this category): ";
+
+		cin >> option;
+
+		if (option == "n")
+		{
+			displayMenu(it, restaurant);
+			break;
+		}
+
+		bool found = false;
+		for (auto items : tempVector)
+			{
+				if (items.getItem() == option)
+				{
+					orderVector.push_back(Menu(category, items.getItem(), items.getPrice()));
+					cout << "\t" << option << " added to cart. " << endl;
+					found = true;
+					break;
+				}
+			}
+			// this is where the item is found and pushed back into the vector
+			// menu (passed in the parameters) points to the entire menuList of the restaurant
+	}
 	
 }
 
 void total()
 {
-	cout << "The end!" << endl;
+	cout << "Your cart: " << endl;
+	double price = 0;
+
+	for (auto items : orderVector)
+	{
+		cout << "\t" << items.getItem() << " - $" << fixed << setprecision(2) << items.getPrice() << endl;
+		price = price + items.getPrice();
+	}
+	cout << "Your total: $" << price << endl;
 }

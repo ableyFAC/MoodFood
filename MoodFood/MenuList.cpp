@@ -85,6 +85,8 @@ const vector<Menu>& MenuList::getItemsInCategory(Category category) const
 	}
 	else
 	{
-		cerr << "Category not found" << endl;
+		static const vector<Menu> empty;
+		return empty;
 	}
+
 }
