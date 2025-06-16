@@ -151,7 +151,7 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 	if (tempVector.size() == 0)
 	{
 		cout << "Sorry!  We do not carry any " << categoryName << ". We will return you to the main page.\n" << endl;
-		return;
+		displayMenu(it, restaurant);
 	}
 	
 	sort(tempVector.begin(), tempVector.end());
@@ -205,7 +205,7 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 
 void total()
 {
-	cout << "Your cart: " << endl;
+	cout << "Your cart: \n" << endl;
 	double price = 0;
 
 	for (auto items : orderVector)
@@ -213,5 +213,9 @@ void total()
 		cout << "\t" << items.getItem() << " - $" << fixed << setprecision(2) << items.getPrice() << endl;
 		price = price + items.getPrice();
 	}
-	cout << "Your total: $" << price << endl;
+	cout << "\nYour total: $" << price << endl;
+
+	cout << "Transferring you to payment section...\n" << endl;
+
+	cout << "This is the end of the MoodFood app. See you next time!" << endl;
 }
