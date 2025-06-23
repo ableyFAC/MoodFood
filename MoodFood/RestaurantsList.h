@@ -29,6 +29,8 @@ public:
 
 	void printAll();
 
+	~RestaurantsList();
+
 private:
 	std::multimap <int, Restaurants>* resMap;
 };

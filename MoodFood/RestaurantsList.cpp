@@ -44,3 +44,9 @@ void RestaurantsList::printAll()
 		++begin;
 	}
 }
+
+RestaurantsList::~RestaurantsList()
+{
+	delete resMap;
+	resMap = nullptr;
+}
