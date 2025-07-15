@@ -8,7 +8,7 @@ string divider(51, '-');
 vector<Menu> orderVector = {};
 
 
-void intro()
+void begin(RestaurantsList& aRestaurant)
 {
 	cout << divider << "\n"
 		<< "\t	Welcome to MoodFood!\n"
@@ -19,11 +19,12 @@ void intro()
 		<< "\t (2) Doing fine :)\n"
 		<< "\t (3) A little down :/\n"
 		<< "\t (4) Not that great :(\n" << endl;
+
+	userMood(aRestaurant);
 }
 
 void userMood(RestaurantsList& aRestaurant)
 {
-
 	int mood = 0;
 	cout << "Your selection: ";
 	cin >> mood;
@@ -40,7 +41,7 @@ void userMood(RestaurantsList& aRestaurant)
 		cout << "All is well, don't worry! Let's recommend you some things to munch on!\n";
 		break;
 	case 4:
-		cout << "We're sorry to hear that. Here are some places that can make you feel better.\n";
+		cout << "We're sorry to hear that. Here are some places that can make you feel better!\n";
 		break;
 	default:
 		cerr << "Invalid input\n";
@@ -62,7 +63,7 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 
 	while (!found)
 	{
-		cout << "Please select a restaurant: ";
+		cout << "Where would you want to eat today? ";
 		cin >> selection;
 
 		restaurantIt = aRestaurant.findRestaurant(selection);

@@ -15,6 +15,8 @@ class RestaurantsList
 	friend class MenuList;
 public:
 	RestaurantsList() : resMap(new multimap<int, Restaurants>) {};
+	RestaurantsList(const RestaurantsList& aRestaurantList);
+	RestaurantsList& operator=(const RestaurantsList& aRestaurantList);
 
 	void addRestaurant(const int& mood, const std::string& restaurantName, 
 		const double& restaurantRating, const MenuList& aMenuList);

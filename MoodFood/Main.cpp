@@ -4,9 +4,7 @@
 // 2) restaurant selection: using user's mood, display restaurants with foods that fit the mood best (right now, just random & different restaurants)
 // 3) food selection: user chooses a restaurant to order from, works like a typical online order (order as much as user wants until user decides to check out)
 
-// will probably need...
-
-// - two separate files/ .cpp files depending on the mood chosen
+// initial vision: complete! as of 7/9/2025
 
 #include "Interface.h"
 #include "FileReaders.h"
@@ -19,8 +17,6 @@ int main()
     RestaurantsList res1;
     getFileData(res1);
 
-    intro();
-
-    userMood(res1);
+    begin(res1);
     
 }

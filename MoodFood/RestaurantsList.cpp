@@ -1,6 +1,22 @@
 #include "RestaurantsList.h"
 #include <iomanip>
 
+RestaurantsList::RestaurantsList(const RestaurantsList& aRestaurantList) // copy constructor
+{
+	resMap = new multimap<int, Restaurants>(*aRestaurantList.resMap);
+}
+
+RestaurantsList& RestaurantsList::operator=(const RestaurantsList& aRestaurantList) // copy assignment operator
+{
+	if (this == &aRestaurantList)
+	{
+		cerr << "Attempted assignment to itself." << endl;
+	}
+
+	resMap = new multimap<int, Restaurants>(*aRestaurantList.resMap);
+	return *this;
+}
+
 void RestaurantsList::addRestaurant(const int& mood, const string& restaurantName, 
 	const double& restaurantRating, const MenuList& aMenuList)
 {
@@ -45,7 +61,7 @@ void RestaurantsList::printAll()
 	}
 }
 
-RestaurantsList::~RestaurantsList()
+RestaurantsList::~RestaurantsList() // destructor
 {
 	delete resMap;
 	resMap = nullptr;
