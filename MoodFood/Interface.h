@@ -23,4 +23,8 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 void order(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void total();
+
+void userPayment(double price);
+
+
 #endif

@@ -1,4 +1,5 @@
 #include "Interface.h"
+#include "FileReaders.h"
 #include <chrono>
 #include <stack>
 
@@ -7,9 +8,10 @@ using namespace std;
 string divider(51, '-');
 vector<Menu> orderVector = {};
 
-
 void begin(RestaurantsList& aRestaurant)
 {
+	getFileData(aRestaurant);
+
 	cout << divider << "\n"
 		<< "\t	Welcome to MoodFood!\n"
 		<< divider << "\n" << endl;
@@ -82,6 +84,10 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 	{
 		cout << "\nSending you to " << selection << "...\n";
 		cout << divider << endl;
+
+		cout << "Welcome to " << selection << "!\n"
+				<< "What would you like to order?\n" << endl;
+
 		displayMenu(restaurantIt, selection);
 	}
 }
@@ -89,8 +95,6 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 void displayMenu(multimap<int, Restaurants>::iterator& it, 
 	string restaurant)
 {
-	cout << "Welcome to " << restaurant << "!\n"
-		<< "What would you like to order?" << endl;
 
 	cout << "\t (1) Appetizers\n"
 		<< "\t (2) Entrees\n"
@@ -172,10 +176,10 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 
 	MenuList& menu = it->second.getMenuList();
 	vector<Menu> tempVector = menu.getItemsInCategory(category);
-	
+
 	string option;
 
-	while (true)
+	while (option != "n")
 	{
 		cout << "\n	Please make an order (enter 'n' when done with this category): ";
 
@@ -184,22 +188,18 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 		if (option == "n")
 		{
 			displayMenu(it, restaurant);
-			break;
 		}
 
 		bool found = false;
 		for (auto items : tempVector)
+		{
+			if (items.getItem() == option)
 			{
-				if (items.getItem() == option)
-				{
-					orderVector.push_back(Menu(category, items.getItem(), items.getPrice()));
-					cout << "\t" << option << " added to cart. " << endl;
-					found = true;
-					break;
-				}
+				orderVector.push_back(Menu(category, items.getItem(), items.getPrice()));
+				cout << "\t" << option << " added to cart. " << endl;
+				found = true;
 			}
-			// this is where the item is found and pushed back into the vector
-			// menu (passed in the parameters) points to the entire menuList of the restaurant
+		}
 	}
 	
 }
@@ -214,9 +214,45 @@ void total()
 		cout << "\t" << items.getItem() << " - $" << fixed << setprecision(2) << items.getPrice() << endl;
 		price = price + items.getPrice();
 	}
-	cout << "\nYour total: $" << price << endl;
+	
+	double tax = price * 0.0725;
 
-	cout << "Transferring you to payment section...\n" << endl;
+	cout << "\tTax - $" << fixed << setprecision(2) << tax
+		<< "\n\t-------------------\n"
+			<< "\tTotal: $" << price + tax << endl;
 
-	cout << "This is the end of the MoodFood app. See you next time!" << endl;
+	cout << "\nTransferring you to payment section...\n" << endl;
+
+	userPayment(price);
+}
+
+void userPayment(double price) // for now, assume the user enters ONLY NUMBERS
+{
+	string cardNumber;
+
+	cout << "Enter your credit card number: ";
+	
+	cin >> cardNumber;
+
+	if (cardNumber.size() == 16)
+	{
+		string result;
+		for (int i = 0; i < cardNumber.size() - 4; ++i)
+		{
+			result += "*";
+			if ((i + 1) % 4 == 0) 
+			{
+				result += "-";
+			}
+		}
+
+		cout << result + cardNumber.substr(12,15);
+	}
+
+	else
+	{
+		cerr << "Invalid card number!!" << endl;
+	}
+
+
 }

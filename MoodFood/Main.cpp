@@ -7,7 +7,6 @@
 // initial vision: complete! as of 7/9/2025
 
 #include "Interface.h"
-#include "FileReaders.h"
 
 using namespace std;
 
@@ -15,7 +14,6 @@ int main()
 {
     
     RestaurantsList res1;
-    getFileData(res1);
 
     begin(res1);
     
