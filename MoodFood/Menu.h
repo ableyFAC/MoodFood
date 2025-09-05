@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum class Category
+enum Category
 {
 	Appetizers,
 	Desserts,

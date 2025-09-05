@@ -97,6 +97,9 @@
     <Text Include="menu_database.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="L&amp;LHawaiianBBQ_menu.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="homepage.html">

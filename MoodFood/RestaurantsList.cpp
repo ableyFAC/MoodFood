@@ -61,7 +61,7 @@ void RestaurantsList::printAll()
 	}
 }
 
-RestaurantsList::~RestaurantsList() // destructor
+RestaurantsList::~RestaurantsList() 
 {
 	delete resMap;
 	resMap = nullptr;

@@ -1,0 +1,9 @@
+Appetizers MaccaroniSalad 3.99
+Appetizers SpamMusubi 2.99
+Drinks FountainDrink 1.99
+Entrees BBQPorkBowl 11.99
+Entrees FriedShrimp 12.99
+Entrees ChickenKatsu 10.00
+Specials Surf&Turf 19.99
+Specials SeafoodCombo
+Specials SpamSaimin

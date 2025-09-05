@@ -24,7 +24,7 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, std::str
 
 void total();
 
-void userPayment(double price);
+void payment();
 
 
 #endif

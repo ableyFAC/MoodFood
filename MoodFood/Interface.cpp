@@ -214,45 +214,49 @@ void total()
 		cout << "\t" << items.getItem() << " - $" << fixed << setprecision(2) << items.getPrice() << endl;
 		price = price + items.getPrice();
 	}
-	
+
 	double tax = price * 0.0725;
 
 	cout << "\tTax - $" << fixed << setprecision(2) << tax
 		<< "\n\t-------------------\n"
-			<< "\tTotal: $" << price + tax << endl;
+		<< "\tTotal: $" << price + tax << endl;
 
 	cout << "\nTransferring you to payment section...\n" << endl;
+	payment();
 
-	userPayment(price);
 }
 
-void userPayment(double price) // for now, assume the user enters ONLY NUMBERS
+void payment()
 {
 	string cardNumber;
+	cardNumber.reserve(16);
 
-	cout << "Enter your credit card number: ";
-	
-	cin >> cardNumber;
-
-	if (cardNumber.size() == 16)
+	while (cardNumber.size() != 16)
 	{
-		string result;
-		for (int i = 0; i < cardNumber.size() - 4; ++i)
+		cout << "Please input your credit or debit card number: ";
+
+		cin >> cardNumber;
+		int size = cardNumber.size();
+		if (size != 16)
 		{
-			result += "*";
-			if ((i + 1) % 4 == 0) 
-			{
-				result += "-";
-			}
+			cout << "Invalid card number!  Try again\n" << endl;
 		}
-
-		cout << result + cardNumber.substr(12,15);
 	}
 
-	else
+	string encrypted;
+
+	for (int i = 0; i < cardNumber.size() - 4; ++i)
 	{
-		cerr << "Invalid card number!!" << endl;
+		encrypted += '*';
+
+		if ((i + 1) % 4 == 0)
+		{
+			encrypted += '-';
+		}
+		
 	}
+	string remains = cardNumber.substr(12, cardNumber.size());
+	encrypted += remains;
 
-
+	cout << "Card number: " << encrypted << " ending in " << remains << endl;
 }
