@@ -1,0 +1,8 @@
+Desserts Horchata 3.99
+Sides EloteCorn 1.49
+Entrees EnchiladaPlate 4.99
+Entrees TacoPlate 8.99
+Desserts Flan 2.49
+Desserts breadlol 1.99
+Entrees BlackenedFish 5.99
+Specials Fajitas 9.99

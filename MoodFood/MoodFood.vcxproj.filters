@@ -64,7 +64,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="restaurants_database.txt">
+    <Text Include="--restaurants_database.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Afters_menu.txt">
@@ -94,10 +94,10 @@
     <Text Include="Popeyes_menu.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="menu_database.txt">
+    <Text Include="L&amp;LHawaiianBBQ_menu.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="L&amp;LHawaiianBBQ_menu.txt">
+    <Text Include="Zoro.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

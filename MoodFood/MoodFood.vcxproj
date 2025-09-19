@@ -152,10 +152,10 @@
     <Text Include="L&amp;LHawaiianBBQ_menu.txt" />
     <Text Include="MarugameUdon_menu.txt" />
     <Text Include="McDonalds_menu.txt" />
-    <Text Include="menu_database.txt" />
     <Text Include="Ola_menu.txt" />
     <Text Include="Popeyes_menu.txt" />
-    <Text Include="restaurants_database.txt" />
+    <Text Include="--restaurants_database.txt" />
+    <Text Include="Zoro.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="homepage.html" />
