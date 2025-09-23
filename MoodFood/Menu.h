@@ -25,11 +25,11 @@ class Menu
 		Menu(Category c, std::string newItem, double newPrice) :
 			category(c), item(newItem), price(newPrice) {}
 
-		std::string getItem();
+		std::string getItem() const;
 
-		double getPrice();
+		double getPrice() const;
 
-		Category getCategory();
+		Category getCategory() const;
 
 		void setItem(std::string newItem);
 

@@ -6,6 +6,12 @@
 
 // initial vision: complete! as of 7/9/2025
 
+// things to revamp:
+// 1) possible redo of filereader.  Redo in a way that when a user selects a restaurant, it will ONLY read and create objects for that restaurant, opposed to
+//      creating objects for EVERY restaurant at the beginning (better efficiency)
+// 2) possible redo of data structures.  Currently, searching for restaurant names and menu item names is O(n) because I'm iterating through the whole vector
+//      What can be done is rewriting those data structures from vectors to hashmaps, therefore lookup and removal will only take O(1)
+
 #include "Interface.h"
 
 using namespace std;

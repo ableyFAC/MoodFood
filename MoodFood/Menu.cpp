@@ -1,16 +1,16 @@
 #include "Menu.h"
 
-string Menu::getItem()
+string Menu::getItem() const
 { 
 	return item; 
 }
 
-double Menu::getPrice()
+double Menu::getPrice() const
 { 
 	return price; 
 }
 
-Category Menu::getCategory()
+Category Menu::getCategory() const
 {
 	return category;
 }
@@ -32,5 +32,5 @@ void Menu::setCategory(Category c)
 
 bool Menu::operator<(const Menu& aMenu) const
 {
-	return item < aMenu.item;
+	return price < aMenu.price;
 }

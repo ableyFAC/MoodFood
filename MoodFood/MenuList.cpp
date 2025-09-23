@@ -8,7 +8,6 @@ using namespace std;
 void MenuList::addMenuItem(Category cat, const Menu& item)
 {
 	theMenu[cat].push_back(item);
-
 }
 
 Category MenuList::stringToEnum(const string& category)
@@ -85,8 +84,7 @@ const vector<Menu>& MenuList::getItemsInCategory(Category category) const
 	}
 	else
 	{
-		static const vector<Menu> empty;
-		return empty;
+		return {};
 	}
 
 }

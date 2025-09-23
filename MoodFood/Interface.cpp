@@ -1,12 +1,12 @@
 #include "Interface.h"
 #include "FileReaders.h"
-#include <chrono>
-#include <stack>
+#include <unordered_map>
 
 using namespace std;
 
 string divider(51, '-');
-vector<Menu> orderVector = {};
+unordered_multimap<string, Category> nameCategoryCart;
+unordered_multimap<string, double> namePriceCart;
 
 void begin(RestaurantsList& aRestaurant)
 {
@@ -137,7 +137,7 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 		}
 		else if (selection == 7)
 		{
-			editCart(orderVector);
+			editCart(nameCategoryCart, namePriceCart, it, restaurant);
 		}
 	}
 
@@ -158,13 +158,13 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 
 	vector<Menu> tempVector = menu.getItemsInCategory(category); // prints "Not found" if applicable
 
-	if (tempVector.size() == 0)
+	if (tempVector.empty())
 	{
 		cout << "Sorry!  We do not carry any " << categoryName << ". We will return you to the main page.\n" << endl;
-		displayMenu(it, restaurant);
+		return displayMenu(it, restaurant);
 	}
 	
-	sort(tempVector.begin(), tempVector.end());
+	sort(tempVector.begin(), tempVector.end()); // THIS sorts based on PRICE due to the overloaded comparison operator
 
 	for (int i = 0; i < tempVector.size(); ++i)
 	{
@@ -191,17 +191,17 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 
 		if (option == "n")
 		{
-			displayMenu(it, restaurant);
+			return displayMenu(it, restaurant);
 		}
 
-		bool found = false;
-		for (auto items : tempVector)
+		for(const Menu& item: tempVector)
 		{
-			if (items.getItem() == option)
+			if (item.getItem() == option)
 			{
-				orderVector.push_back(Menu(category, items.getItem(), items.getPrice()));
+				//orderVector.push_back(Menu(category, item.getItem(), item.getPrice()));
+				nameCategoryCart.emplace(item.getItem(), category);
+				namePriceCart.emplace(item.getItem(), item.getPrice());
 				cout << "\t" << option << " added to cart. " << endl;
-				found = true;
 			}
 		}
 	}
@@ -212,10 +212,12 @@ void printCart()
 	cout << "Your cart: \n" << endl;
 	double total = 0;
 
-	for (auto items : orderVector)
+	auto it = namePriceCart.begin();
+	while (it != namePriceCart.end())
 	{
-		cout << "\t" << items.getItem() << " - $" << fixed << setprecision(2) << items.getPrice() << endl;
-		total = total + items.getPrice();
+		cout << "\t" << it->first << " - $" << fixed << setprecision(2) << it->second << endl;
+		total = total + it->second;
+		++it;
 	}
 
 	double tax = total * 0.0725;
@@ -225,49 +227,50 @@ void printCart()
 		<< "\tTotal: $" << total + tax << endl;
 }
 
-void editCart(vector<Menu>& cart)
+void editCart(unordered_multimap<std::string, Category>& nameCategoryCart, unordered_multimap<std::string, double>& namePriceCart,
+	multimap<int, Restaurants>::iterator& it, std::string restaurant)
 {
-
-	cout << "Which item do you want to remove? (type 'n' to exit)\n\n"; 
 
 	string removeItem;
 
 	while (removeItem != "n")
 	{
-		if (cart.size() == 0)
+		cout << "Which item do you want to remove? (type 'n' to exit)\n\n";
+
+		if (nameCategoryCart.empty() && namePriceCart.empty())
 		{
 			cout << "Cart is empty!  Returning you back to the previous slide" << endl;
-			return;
+			return displayMenu(it, restaurant);
 		}
 
 		printCart();
 		
 		cin >> removeItem;
+		// if it exists in one map, it will exist in the other
+		auto ncIt = nameCategoryCart.find(removeItem);
+		auto npIt = namePriceCart.find(removeItem);
 
-		for (auto& item : cart)
+		if (ncIt != nameCategoryCart.end())
 		{
-			if (item.getItem() == removeItem)
-			{
-				auto temp = item;
-				item = cart[cart.size() - 1];
-				cart[cart.size() - 1] = temp;
+			nameCategoryCart.erase(ncIt);
+			namePriceCart.erase(npIt);
 
-				cart.pop_back();
-				cout << removeItem << " has been removed." << endl;
-
-				break;
-			}
+			cout << removeItem << " has been removed." << endl;
+			
+		}
+		else
+		{
+			cout << "Item does not exist" << endl;
 		}
 
 	}
 
 	if (removeItem == "n")
 	{
-		return;
+		return displayMenu(it, restaurant);
 	}
 
 }
-
 
 void total()
 {
@@ -275,12 +278,7 @@ void total()
 	printCart();
 
 	cout << "\nTransferring you to payment section...\n" << endl;
-	payment();
-
-}
-
-void payment()
-{
+	
 	string cardNumber;
 	cardNumber.reserve(16);
 
@@ -306,7 +304,7 @@ void payment()
 		{
 			encrypted += '-';
 		}
-		
+
 	}
 	string remains = cardNumber.substr(12, cardNumber.size());
 	encrypted += remains;
@@ -315,4 +313,5 @@ void payment()
 
 	cout << "Payment accepted!  You will be updated about when you can pick up your order.  Thank you for using MoodFood!" << endl;
 	exit(1);
+
 }

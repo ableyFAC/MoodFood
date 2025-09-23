@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -22,13 +23,13 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 
 void printCart();
 
-void editCart(vector<Menu>& cart);
+void editCart(unordered_multimap<std::string, Category>& nameCategoryCart, unordered_multimap<std::string, double>& namePriceCart,
+	multimap<int, Restaurants>::iterator& it, std::string restaurant);
 
 void order(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void total();
 
-void payment();
 
 
 #endif

@@ -8,6 +8,8 @@ Entrees PorkKurabutaNoodles 7.99
 Entrees ShrimpFriedRice 8.99
 Sides StringBeans 5.99
 Sides ChickenDumplings 6.99
+Sides GarlicSpinach 4.99
+Sides WhiteRice 2.99
 Specials BeefTenderloin 13.99
 Specials TruffleXiaoLongBao 10.99
 
