@@ -20,6 +20,10 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 
 void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
+void printCart();
+
+void editCart(vector<Menu>& cart);
+
 void order(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void total();

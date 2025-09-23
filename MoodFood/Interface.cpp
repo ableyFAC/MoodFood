@@ -85,9 +85,6 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 		cout << "\nSending you to " << selection << "...\n";
 		cout << divider << endl;
 
-		cout << "Welcome to " << selection << "!\n"
-				<< "What would you like to order?\n" << endl;
-
 		displayMenu(restaurantIt, selection);
 	}
 }
@@ -96,17 +93,21 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 	string restaurant)
 {
 
+	cout << "Welcome to " << restaurant << "!\n"
+		<< "What would you like to order?\n" << endl;
+
 	cout << "\t (1) Appetizers\n"
 		<< "\t (2) Entrees\n"
 		<< "\t (3) Specials\n"
 		<< "\t (4) Desserts\n"
 		<< "\t (5) Sides\n"
 		<< "\t (6) Drinks\n"
-		<< "\t (7) Checkout\n";
+		<< "\t (7) Edit Cart\n"
+		<< "\t (8) Checkout\n";
 
 	int selection = 0;
 
-	while (selection != 7)
+	while (selection != 8)
 	{
 		cin >> selection;
 
@@ -134,9 +135,13 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 		{
 			printByCategory(it, Category::Drinks, restaurant);
 		}
+		else if (selection == 7)
+		{
+			editCart(orderVector);
+		}
 	}
 
-	if (selection == 7)
+	if (selection == 8)
 	{
 		total();
 	}
@@ -144,12 +149,12 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 
 void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, string restaurant)
 {
-	MenuList temp;
+	MenuList menu;
 
-	string categoryName = temp.enumToString(category);
+	string categoryName = menu.enumToString(category);
 	cout << categoryName << "\n" << "------------ \n";
 
-	MenuList& menu = it->second.getMenuList();
+	menu = it->second.getMenuList();
 
 	vector<Menu> tempVector = menu.getItemsInCategory(category); // prints "Not found" if applicable
 
@@ -173,7 +178,6 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 
 void order(multimap<int, Restaurants>::iterator& it, Category category, string restaurant)
 {
-
 	MenuList& menu = it->second.getMenuList();
 	vector<Menu> tempVector = menu.getItemsInCategory(category);
 
@@ -201,25 +205,74 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 			}
 		}
 	}
-	
 }
 
-void total()
+void printCart()
 {
 	cout << "Your cart: \n" << endl;
-	double price = 0;
+	double total = 0;
 
 	for (auto items : orderVector)
 	{
 		cout << "\t" << items.getItem() << " - $" << fixed << setprecision(2) << items.getPrice() << endl;
-		price = price + items.getPrice();
+		total = total + items.getPrice();
 	}
 
-	double tax = price * 0.0725;
+	double tax = total * 0.0725;
 
 	cout << "\tTax - $" << fixed << setprecision(2) << tax
 		<< "\n\t-------------------\n"
-		<< "\tTotal: $" << price + tax << endl;
+		<< "\tTotal: $" << total + tax << endl;
+}
+
+void editCart(vector<Menu>& cart)
+{
+
+	cout << "Which item do you want to remove? (type 'n' to exit)\n\n"; 
+
+	string removeItem;
+
+	while (removeItem != "n")
+	{
+		if (cart.size() == 0)
+		{
+			cout << "Cart is empty!  Returning you back to the previous slide" << endl;
+			return;
+		}
+
+		printCart();
+		
+		cin >> removeItem;
+
+		for (auto& item : cart)
+		{
+			if (item.getItem() == removeItem)
+			{
+				auto temp = item;
+				item = cart[cart.size() - 1];
+				cart[cart.size() - 1] = temp;
+
+				cart.pop_back();
+				cout << removeItem << " has been removed." << endl;
+
+				break;
+			}
+		}
+
+	}
+
+	if (removeItem == "n")
+	{
+		return;
+	}
+
+}
+
+
+void total()
+{
+
+	printCart();
 
 	cout << "\nTransferring you to payment section...\n" << endl;
 	payment();
@@ -259,4 +312,7 @@ void payment()
 	encrypted += remains;
 
 	cout << "Card number: " << encrypted << " ending in " << remains << endl;
+
+	cout << "Payment accepted!  You will be updated about when you can pick up your order.  Thank you for using MoodFood!" << endl;
+	exit(1);
 }

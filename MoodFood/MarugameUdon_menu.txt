@@ -8,3 +8,4 @@ Sides BKSauce 0.99
 Sides SoySace 0.99
 Specials ChickenKatsuRiceBowl 12.99
 Specials TanTanUdon 8.99
+Specials ShrimpTempuraUdon 6.99
