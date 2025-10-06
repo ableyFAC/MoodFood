@@ -23,13 +23,12 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 
 void printCart();
 
-void editCart(unordered_multimap<std::string, Category>& nameCategoryCart, unordered_multimap<std::string, double>& namePriceCart,
+void editCart(unordered_multimap<std::string, double>& namePriceCart,
 	multimap<int, Restaurants>::iterator& it, std::string restaurant);
 
 void order(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void total();
-
 
 
 #endif

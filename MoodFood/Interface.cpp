@@ -5,7 +5,6 @@
 using namespace std;
 
 string divider(51, '-');
-unordered_multimap<string, Category> nameCategoryCart;
 unordered_multimap<string, double> namePriceCart;
 
 void begin(RestaurantsList& aRestaurant)
@@ -137,7 +136,7 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 		}
 		else if (selection == 7)
 		{
-			editCart(nameCategoryCart, namePriceCart, it, restaurant);
+			editCart(namePriceCart, it, restaurant);
 		}
 	}
 
@@ -198,8 +197,6 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 		{
 			if (item.getItem() == option)
 			{
-				//orderVector.push_back(Menu(category, item.getItem(), item.getPrice()));
-				nameCategoryCart.emplace(item.getItem(), category);
 				namePriceCart.emplace(item.getItem(), item.getPrice());
 				cout << "\t" << option << " added to cart. " << endl;
 			}
@@ -227,7 +224,7 @@ void printCart()
 		<< "\tTotal: $" << total + tax << endl;
 }
 
-void editCart(unordered_multimap<std::string, Category>& nameCategoryCart, unordered_multimap<std::string, double>& namePriceCart,
+void editCart(unordered_multimap<std::string, double>& namePriceCart,
 	multimap<int, Restaurants>::iterator& it, std::string restaurant)
 {
 
@@ -237,7 +234,7 @@ void editCart(unordered_multimap<std::string, Category>& nameCategoryCart, unord
 	{
 		cout << "Which item do you want to remove? (type 'n' to exit)\n\n";
 
-		if (nameCategoryCart.empty() && namePriceCart.empty())
+		if (namePriceCart.empty())
 		{
 			cout << "Cart is empty!  Returning you back to the previous slide" << endl;
 			return displayMenu(it, restaurant);
@@ -246,28 +243,25 @@ void editCart(unordered_multimap<std::string, Category>& nameCategoryCart, unord
 		printCart();
 		
 		cin >> removeItem;
-		// if it exists in one map, it will exist in the other
-		auto ncIt = nameCategoryCart.find(removeItem);
+
 		auto npIt = namePriceCart.find(removeItem);
 
-		if (ncIt != nameCategoryCart.end())
+		if (npIt != namePriceCart.end())
 		{
-			nameCategoryCart.erase(ncIt);
 			namePriceCart.erase(npIt);
 
 			cout << removeItem << " has been removed." << endl;
 			
+		}
+		else if (removeItem == "n")
+		{
+			return displayMenu(it, restaurant);
 		}
 		else
 		{
 			cout << "Item does not exist" << endl;
 		}
 
-	}
-
-	if (removeItem == "n")
-	{
-		return displayMenu(it, restaurant);
 	}
 
 }
