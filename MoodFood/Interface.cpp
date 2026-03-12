@@ -7,8 +7,9 @@ using namespace std;
 string divider(51, '-');
 unordered_multimap<string, double> namePriceCart;
 
-void begin(RestaurantsList& aRestaurant)
+void begin()
 {
+	RestaurantsList aRestaurant;
 	getFileData(aRestaurant);
 
 	cout << divider << "\n"

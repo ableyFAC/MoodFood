@@ -22,12 +22,7 @@ using namespace std;
 
 int main()
 {
-    
-    RestaurantsList res1;
-
-    begin(res1);
-
-
+    begin();
     // testing commit on new microsoft account
     
 }

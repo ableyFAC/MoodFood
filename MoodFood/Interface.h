@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void begin(RestaurantsList& aRestaurant);
+void begin();
 
 void userMood(RestaurantsList& aRestaurant);
 
