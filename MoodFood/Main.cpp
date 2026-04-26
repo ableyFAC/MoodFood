@@ -22,7 +22,5 @@ using namespace std;
 
 int main()
 {
-    begin();
-    // testing commit on new microsoft account
-    
+    begin();    
 }

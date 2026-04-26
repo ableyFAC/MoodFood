@@ -50,9 +50,6 @@
     <ClInclude Include="RestaurantsList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileReaders.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -62,44 +59,9 @@
     <ClInclude Include="MenuList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="--restaurants_database.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Afters_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Boudins_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Bruxie_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Coldstone_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="DinTaiFung_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="MarugameUdon_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="McDonalds_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Ola_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Popeyes_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="L&amp;LHawaiianBBQ_menu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Zoro.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <ClInclude Include="FileReaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="homepage.html">
@@ -108,5 +70,43 @@
     <None Include="style.css">
       <Filter>Static</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Zoro.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Afters_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Boudins_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Bruxie_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Coldstone_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="DinTaiFung_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="L&amp;LHawaiianBBQ_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="MarugameUdon_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="McDonalds_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Ola_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Popeyes_menu.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="restaurants_database.txt">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

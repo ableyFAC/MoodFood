@@ -131,7 +131,9 @@
     <ClCompile Include="BigFive.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Menu.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
     <ClCompile Include="MenuList.cpp" />
     <ClCompile Include="Restaurants.cpp" />
     <ClCompile Include="RestaurantsList.cpp" />
@@ -140,23 +142,48 @@
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuList.h" />
-    <ClInclude Include="FileReaders.h" />
+    <ClInclude Include="FileReaders.cpp" />
     <ClInclude Include="Restaurants.h" />
     <ClInclude Include="RestaurantsList.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Afters_menu.txt" />
-    <Text Include="Boudins_menu.txt" />
-    <Text Include="Bruxie_menu.txt" />
-    <Text Include="Coldstone_menu.txt" />
-    <Text Include="DinTaiFung_menu.txt" />
-    <Text Include="L&amp;LHawaiianBBQ_menu.txt" />
-    <Text Include="MarugameUdon_menu.txt" />
-    <Text Include="McDonalds_menu.txt" />
-    <Text Include="Ola_menu.txt" />
-    <Text Include="Popeyes_menu.txt" />
-    <Text Include="--restaurants_database.txt" />
-    <Text Include="Zoro.txt" />
+    <CopyFileToFolders Include="Afters_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Boudins_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Bruxie_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Coldstone_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="DinTaiFung_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="L&amp;LHawaiianBBQ_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="MarugameUdon_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="McDonalds_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Ola_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Popeyes_menu.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="restaurants_database.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Zoro.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="homepage.html" />

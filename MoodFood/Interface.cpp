@@ -1,16 +1,17 @@
 #include "Interface.h"
-#include "FileReaders.h"
+#include "FileReaders.cpp"
 #include <unordered_map>
 
 using namespace std;
 
 string divider(51, '-');
 unordered_multimap<string, double> namePriceCart;
+int MOOD = 0;
+RestaurantsList* aRestaurant = new RestaurantsList(); // this loads all of the restaurants
 
 void begin()
 {
-	RestaurantsList aRestaurant;
-	getFileData(aRestaurant);
+	getFileData(*aRestaurant);
 
 	cout << divider << "\n"
 		<< "\t	Welcome to MoodFood!\n"
@@ -22,40 +23,43 @@ void begin()
 		<< "\t (3) A little down :/\n"
 		<< "\t (4) Not that great :(\n" << endl;
 
-	userMood(aRestaurant);
+	userMood();
 }
 
-void userMood(RestaurantsList& aRestaurant)
+void userMood()
 {
-	int mood = 0;
-	cout << "Your selection: ";
-	cin >> mood;
 
-	switch (mood)
+	while (MOOD < 1 || MOOD > 4)
 	{
-	case 1:
-		cout << "We're glad to hear that! Here are some restaurants to keep the good vibes going!\n";
-		break;
-	case 2:
-		cout << "That's good to hear! Maybe some good food can make the day even better.\n";
-		break;
-	case 3:
-		cout << "All is well, don't worry! Let's recommend you some things to munch on!\n";
-		break;
-	case 4:
-		cout << "We're sorry to hear that. Here are some places that can make you feel better!\n";
-		break;
-	default:
-		cerr << "Invalid input\n";
-	}
-	cout << endl;
+		cin >> MOOD;
 
-	chooseRestaurant(mood, aRestaurant);
+		switch (MOOD)
+		{
+			case 1:
+				cout << "We're glad to hear that! Here are some restaurants to keep the good vibes going!\n";
+				break;
+			case 2:
+				cout << "That's good to hear! Maybe some good food can make the day even better.\n";
+				break;
+			case 3:
+				cout << "All is well, don't worry! Let's recommend you some things to munch on!\n";
+				break;
+			case 4:
+				cout << "We're sorry to hear that. Here are some places that can make you feel better!\n";
+				break;
+			default:
+				cerr << "Invalid input\n";
+		
+		}
+		cout << endl;
+	}
+	
+	chooseRestaurant();
 }
 
-void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
+void chooseRestaurant()
 {
-	aRestaurant.displayRestaurants(mood);
+	aRestaurant->displayRestaurants(MOOD);
 	cout << endl;
 
 	bool found = false;
@@ -68,9 +72,9 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 		cout << "Where would you want to eat today? ";
 		cin >> selection;
 
-		restaurantIt = aRestaurant.findRestaurant(selection);
+		restaurantIt = aRestaurant->findRestaurant(selection);
 
-		if (restaurantIt != aRestaurant.getEndIterator())
+		if (restaurantIt != aRestaurant->getEndIterator())
 		{
 			found = true;
 		}
@@ -89,12 +93,13 @@ void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant)
 	}
 }
 
-void displayMenu(multimap<int, Restaurants>::iterator& it, 
+inline void displayMenu(multimap<int, Restaurants>::iterator& it, 
 	string restaurant)
 {
 
 	cout << "Welcome to " << restaurant << "!\n"
-		<< "What would you like to order?\n" << endl;
+		<< "What would you like to order?\n"
+			<< "Press '<' to select another restaurant\n" << endl;
 
 	cout << "\t (1) Appetizers\n"
 		<< "\t (2) Entrees\n"
@@ -105,45 +110,51 @@ void displayMenu(multimap<int, Restaurants>::iterator& it,
 		<< "\t (7) Edit Cart\n"
 		<< "\t (8) Checkout\n";
 
-	int selection = 0;
+	char selection = '0';
 
-	while (selection != 8)
+	while (selection != '<')
 	{
 		cin >> selection;
 
-		if (selection == 1)
+		if (selection == '1')
 		{
 			printByCategory(it, Category::Appetizers, restaurant);
 		}
-		else if (selection == 2)
+		else if (selection == '2')
 		{
 			printByCategory(it, Category::Entrees, restaurant);
 		}
-		else if (selection == 3)
+		else if (selection == '3')
 		{
 			printByCategory(it, Category::Specials, restaurant);
 		}
-		else if (selection == 4)
+		else if (selection == '4')
 		{
 			printByCategory(it, Category::Desserts, restaurant);
 		}
-		else if (selection == 5)
+		else if (selection == '5')
 		{
 			printByCategory(it, Category::Sides, restaurant);
 		}
-		else if (selection == 6)
+		else if (selection == '6')
 		{
 			printByCategory(it, Category::Drinks, restaurant);
 		}
-		else if (selection == 7)
+		else if (selection == '7')
 		{
 			editCart(namePriceCart, it, restaurant);
 		}
+		else if (selection == '8')
+		{
+			total();
+		}
 	}
 
-	if (selection == 8)
+	if (selection == '<')
 	{
-		total();
+		cout << "\nReturning you to the restaurant selection page...\n" << endl;
+		// how do I return back to the restaurant selection page?
+		chooseRestaurant();
 	}
 }
 
@@ -161,7 +172,7 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 	if (tempVector.empty())
 	{
 		cout << "Sorry!  We do not carry any " << categoryName << ". We will return you to the main page.\n" << endl;
-		return displayMenu(it, restaurant);
+		displayMenu(it, restaurant);
 	}
 	
 	sort(tempVector.begin(), tempVector.end()); // THIS sorts based on PRICE due to the overloaded comparison operator
@@ -291,7 +302,7 @@ void total()
 
 	string encrypted;
 
-	for (int i = 0; i < cardNumber.size() - 4; ++i)
+	for (unsigned int i{ 0 }; i < cardNumber.size() - 4; ++i)
 	{
 		encrypted += '*';
 
@@ -307,6 +318,7 @@ void total()
 	cout << "Card number: " << encrypted << " ending in " << remains << endl;
 
 	cout << "Payment accepted!  You will be updated about when you can pick up your order.  Thank you for using MoodFood!" << endl;
+	delete aRestaurant;
 	exit(1);
 
 }

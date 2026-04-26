@@ -12,12 +12,12 @@ using namespace std;
 
 void begin();
 
-void userMood(RestaurantsList& aRestaurant);
+void userMood();
 
-void chooseRestaurant(const int& mood, RestaurantsList& aRestaurant);
+void chooseRestaurant();
 
 void displayMenu(multimap<int, Restaurants>::iterator& it, 
-	std::string restaurant); 
+	std::string restaurant);
 
 void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
