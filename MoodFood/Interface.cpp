@@ -7,7 +7,7 @@ using namespace std;
 string divider(51, '-');
 unordered_multimap<string, double> namePriceCart;
 int MOOD = 0;
-RestaurantsList* aRestaurant = new RestaurantsList(); // this loads all of the restaurants
+RestaurantsList* aRestaurant = new RestaurantsList(); 
 
 void begin()
 {
@@ -153,7 +153,6 @@ inline void displayMenu(multimap<int, Restaurants>::iterator& it,
 	if (selection == '<')
 	{
 		cout << "\nReturning you to the restaurant selection page...\n" << endl;
-		// how do I return back to the restaurant selection page?
 		chooseRestaurant();
 	}
 }
@@ -318,7 +317,7 @@ void total()
 	cout << "Card number: " << encrypted << " ending in " << remains << endl;
 
 	cout << "Payment accepted!  You will be updated about when you can pick up your order.  Thank you for using MoodFood!" << endl;
-	delete aRestaurant;
+	aRestaurant->~RestaurantsList();
 	exit(1);
 
 }

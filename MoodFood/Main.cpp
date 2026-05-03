@@ -9,12 +9,6 @@
 // things to revamp:
 // 1) possible redo of filereader.  Redo in a way that when a user selects a restaurant, it will ONLY read and create objects for that restaurant, opposed to
 //      creating objects for EVERY restaurant at the beginning (better efficiency)
-// 2) possible redo of data structures.  Currently, searching for restaurant names and menu item names is O(n) because I'm iterating through the whole vector
-//      What can be done is rewriting those data structures from vectors to hashmaps, therefore lookup and removal will only take O(1)
-
-// update on revamps:
-// 1) filereader has been revamped!  It's much easier to read and better optimized, I think
-// 2) I sort of did this? I used a hashmap for the user's cart, but the variables in the Menu and Restaurant objects are still vectors
 
 #include "Interface.h"
 
@@ -23,4 +17,7 @@ using namespace std;
 int main()
 {
     begin();    
+
+    cin.get();
+    return 0;
 }
