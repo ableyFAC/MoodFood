@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-string Menu::getItem() const
+std::string Menu::getItem() const
 { 
 	return item; 
 }
@@ -15,7 +15,7 @@ Category Menu::getCategory() const
 	return category;
 }
 
-void Menu::setItem(string newItem) 
+void Menu::setItem(std::string newItem) 
 { 
 	item = newItem; 
 }

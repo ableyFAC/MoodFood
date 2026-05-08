@@ -12,5 +12,3 @@ Sides GarlicSpinach 4.99
 Sides WhiteRice 2.99
 Specials BeefTenderloin 13.99
 Specials TruffleXiaoLongBao 10.99
-
-

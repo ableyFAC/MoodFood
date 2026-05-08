@@ -6,35 +6,31 @@
 #include <algorithm>
 #include <iostream>
 
-using namespace std;
 // this class will handle the multimap
 // int should be the mood selected
 // Restaurants object holds the name and such
 class RestaurantsList
 {
-	friend class MenuList;
-public:
-	RestaurantsList() : resMap(new multimap<int, Restaurants>) {};
-	RestaurantsList(const RestaurantsList& aRestaurantList);
-	RestaurantsList& operator=(const RestaurantsList& aRestaurantList);
+	public:
+		RestaurantsList() = default;
 
-	void addRestaurant(const int& mood, const std::string& restaurantName, 
-		const double& restaurantRating, const MenuList& aMenuList);
+		RestaurantsList(const RestaurantsList& aRestaurantList);
 
-	void displayRestaurants(const int& mood);
+		RestaurantsList& operator=(const RestaurantsList& aRestaurantList);
 
-	multimap<int, Restaurants>::iterator findRestaurant(const std::string& restaurant);
+		void addRestaurant(const int& mood, const std::string& restaurantName, 
+			const double& restaurantRating, const MenuList& aMenuList);
 
-	auto getEndIterator() {
-		return resMap->end();
-	};
+		void displayRestaurants(const int& mood);
 
-	void printAll();
+		std::multimap<int, Restaurants>::iterator findRestaurant(const std::string& restaurant);
 
-	~RestaurantsList();
+		auto getEndIterator() { return resMap.end(); };
 
-private:
-	std::multimap <int, Restaurants>* resMap;
+		void printAll();
+
+	private:
+		std::multimap <int, Restaurants> resMap;
 };
 
 #endif

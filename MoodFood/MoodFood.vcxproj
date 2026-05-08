@@ -128,7 +128,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BigFive.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp">
@@ -139,10 +138,11 @@
     <ClCompile Include="RestaurantsList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileReaders.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuList.h" />
-    <ClInclude Include="FileReaders.cpp" />
+    <ClCompile Include="FileReaders.cpp" />
     <ClInclude Include="Restaurants.h" />
     <ClInclude Include="RestaurantsList.h" />
   </ItemGroup>
@@ -184,10 +184,6 @@
     <CopyFileToFolders Include="Zoro.txt">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="homepage.html" />
-    <None Include="style.css" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

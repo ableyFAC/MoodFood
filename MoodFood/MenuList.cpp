@@ -74,7 +74,7 @@ string MenuList::enumToString(const Category& category)
 	}
 }
 
-const vector<Menu>& MenuList::getItemsInCategory(Category category) const
+const vector<Menu> MenuList::getItemsInCategory(Category category) const
 {
 	auto it = theMenu.find(category);
 

@@ -6,22 +6,21 @@
 #include <map>
 #include <vector>
 
-using namespace std;
-
 class MenuList
 {
-public:
 
-	void addMenuItem(Category cat, const Menu& item);
+	public:
 
-	Category stringToEnum(const std::string& category);
+		void addMenuItem(Category cat, const Menu& item);
 
-	std::string enumToString(const Category& category);
+		Category stringToEnum(const std::string& category);
 
-	const vector<Menu>& getItemsInCategory(Category category) const;
+		std::string enumToString(const Category& category);
 
-private:
-	map<Category, vector<Menu>> theMenu;
+		const std::vector<Menu> getItemsInCategory(Category category) const;
+
+	private:
+		std::map < Category, std::vector<Menu> > theMenu;
 };
 
 

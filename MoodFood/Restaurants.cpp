@@ -1,11 +1,11 @@
 #include "Restaurants.h"
 
-string Restaurants::getRestaurantName() const
+std::string Restaurants::getRestaurantName() const
 {
 	return restaurantName;
 }
 
-void Restaurants::setRestaurantName(string newName)
+void Restaurants::setRestaurantName(std::string newName)
 {
 	restaurantName = newName;
 }

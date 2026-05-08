@@ -1,34 +1,31 @@
-#include "RestaurantsList.h"
+#include "FileReaders.h"
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <iomanip>
 
-using namespace std;
+const std::string RESTAURANTS_FILE = "restaurants_database.txt";
 
-const string RESTAURANTS_FILE = "restaurants_database.txt";
-
-void createRestaurantAndMenuList(ifstream& restaurantFile, RestaurantsList& aRestaurantList)
+void createRestaurantAndMenuList(std::ifstream& restaurantFile, RestaurantsList& aRestaurantList)
 {
-    string menuFile;
+    std::string menuFile;
     int mood = 0;
-    string restaurant;
+    std::string restaurant;
     double rating = 0.0;
 
     while (restaurantFile >> menuFile >> mood >> restaurant >> rating)
     {
-        ifstream theMenuFile;
+        std::ifstream theMenuFile;
         theMenuFile.open(menuFile);
 
         if (!theMenuFile)
         {
-            cerr << menuFile << " does NOT exist" << endl;
+            std::cerr << menuFile << " does NOT exist" << std::endl;
             exit(1);
         }
 
-        string category;
-        string item;
+        std::string category;
+        std::string item;
         double price = 0.0;
 
         MenuList aMenu;
@@ -46,13 +43,13 @@ void createRestaurantAndMenuList(ifstream& restaurantFile, RestaurantsList& aRes
 
 void getFileData(RestaurantsList& aRestaurantList)
 {
-    ifstream restaurantFile;
+    std::ifstream restaurantFile;
 
     restaurantFile.open(RESTAURANTS_FILE);
 
     if (!restaurantFile)
     {
-        cerr << RESTAURANTS_FILE << " does NOT exist" << endl;
+        std::cerr << RESTAURANTS_FILE << " does NOT exist" << std::endl;
         exit(1);
     }
 

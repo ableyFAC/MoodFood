@@ -33,13 +33,13 @@
     <ClCompile Include="RestaurantsList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BigFive.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MenuList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,17 +59,9 @@
     <ClInclude Include="MenuList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileReaders.cpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="FileReaders.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="homepage.html">
-      <Filter>Templates</Filter>
-    </None>
-    <None Include="style.css">
-      <Filter>Static</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Zoro.txt">

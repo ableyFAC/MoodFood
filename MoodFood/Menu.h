@@ -3,8 +3,6 @@
 
 #include <string>
 
-using namespace std;
-
 enum Category
 {
 	Appetizers,

@@ -8,25 +8,22 @@
 #include <string>
 #include <unordered_map>
 
-using namespace std;
-
 void begin();
 
 void userMood();
 
 void chooseRestaurant();
 
-void displayMenu(multimap<int, Restaurants>::iterator& it, 
-	std::string restaurant);
+inline void displayMenu(std::multimap<int, Restaurants>::iterator& it, std::string restaurant);
 
-void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
+void printByCategory(std::multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void printCart();
 
-void editCart(unordered_multimap<std::string, double>& namePriceCart,
-	multimap<int, Restaurants>::iterator& it, std::string restaurant);
+void editCart(std::unordered_multimap<std::string, double>& namePriceCart,
+	std::multimap<int, Restaurants>::iterator& it, std::string restaurant);
 
-void order(multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
+void order(std::multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant);
 
 void total();
 

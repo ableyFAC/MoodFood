@@ -4,8 +4,6 @@
 #include "MenuList.h"
 #include <string>
 
-using namespace std;
-
 class Restaurants
 {
 public:

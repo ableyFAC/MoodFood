@@ -1,27 +1,25 @@
 #include "Interface.h"
-#include "FileReaders.cpp"
+#include "FileReaders.h"
 #include <unordered_map>
 
-using namespace std;
-
-string divider(51, '-');
-unordered_multimap<string, double> namePriceCart;
+std::string divider(51, '-');
+std::unordered_multimap<std::string, double> namePriceCart;
 int MOOD = 0;
-RestaurantsList* aRestaurant = new RestaurantsList(); 
+RestaurantsList aRestaurant; 
 
 void begin()
 {
-	getFileData(*aRestaurant);
+	getFileData(aRestaurant);
 
-	cout << divider << "\n"
+	std::cout << divider << "\n"
 		<< "\t	Welcome to MoodFood!\n"
-		<< divider << "\n" << endl;
+		<< divider << "\n" << std::endl;
 
-	cout << "How are you feeling right now, user?\n"
+	std::cout << "How are you feeling right now, user?\n"
 		<< "\t (1) Happy :D\n"
 		<< "\t (2) Doing fine :)\n"
 		<< "\t (3) A little down :/\n"
-		<< "\t (4) Not that great :(\n" << endl;
+		<< "\t (4) Not that great :(\n" << std::endl;
 
 	userMood();
 }
@@ -31,27 +29,27 @@ void userMood()
 
 	while (MOOD < 1 || MOOD > 4)
 	{
-		cin >> MOOD;
+		std::cin >> MOOD;
 
 		switch (MOOD)
 		{
 			case 1:
-				cout << "We're glad to hear that! Here are some restaurants to keep the good vibes going!\n";
+				std::cout << "We're glad to hear that! Here are some restaurants to keep the good vibes going!\n";
 				break;
 			case 2:
-				cout << "That's good to hear! Maybe some good food can make the day even better.\n";
+				std::cout << "That's good to hear! Maybe some good food can make the day even better.\n";
 				break;
 			case 3:
-				cout << "All is well, don't worry! Let's recommend you some things to munch on!\n";
+				std::cout << "All is well, don't worry! Let's recommend you some things to munch on!\n";
 				break;
 			case 4:
-				cout << "We're sorry to hear that. Here are some places that can make you feel better!\n";
+				std::cout << "We're sorry to hear that. Here are some places that can make you feel better!\n";
 				break;
 			default:
-				cerr << "Invalid input\n";
+				std::cerr << "Invalid input\n";
 		
 		}
-		cout << endl;
+		std::cout << std::endl;
 	}
 	
 	chooseRestaurant();
@@ -59,49 +57,48 @@ void userMood()
 
 void chooseRestaurant()
 {
-	aRestaurant->displayRestaurants(MOOD);
-	cout << endl;
+	aRestaurant.displayRestaurants(MOOD);
+	std::cout << std::endl;
 
 	bool found = false;
-	string selection;
+	std::string selection;
 
-	multimap<int, Restaurants>::iterator restaurantIt;
+	std::multimap<int, Restaurants>::iterator restaurantIt;
 
 	while (!found)
 	{
-		cout << "Where would you want to eat today? ";
-		cin >> selection;
+		std::cout << "Where would you want to eat today? ";
+		std::cin >> selection;
 
-		restaurantIt = aRestaurant->findRestaurant(selection);
+		restaurantIt = aRestaurant.findRestaurant(selection);
 
-		if (restaurantIt != aRestaurant->getEndIterator())
+		if (restaurantIt != aRestaurant.getEndIterator())
 		{
 			found = true;
 		}
 		else
 		{
-			cerr << "\nRestaurant not found. Please try again." << endl;
+			std::cerr << "\nRestaurant not found. Please try again." << std::endl;
 		}
 	}
 
 	if (found)
 	{
-		cout << "\nSending you to " << selection << "...\n";
-		cout << divider << endl;
+		std::cout << "\nSending you to " << selection << "...\n";
+		std::cout << divider << std::endl;
 
 		displayMenu(restaurantIt, selection);
 	}
 }
 
-inline void displayMenu(multimap<int, Restaurants>::iterator& it, 
-	string restaurant)
+inline void displayMenu(std::multimap<int, Restaurants>::iterator& it, 
+	std::string restaurant)
 {
-
-	cout << "Welcome to " << restaurant << "!\n"
+	std::cout << "Welcome to " << restaurant << "!\n"
 		<< "What would you like to order?\n"
-			<< "Press '<' to select another restaurant\n" << endl;
+			<< "Press '<' to select another restaurant\n" << std::endl;
 
-	cout << "\t (1) Appetizers\n"
+	std::cout << "\t (1) Appetizers\n"
 		<< "\t (2) Entrees\n"
 		<< "\t (3) Specials\n"
 		<< "\t (4) Desserts\n"
@@ -114,7 +111,7 @@ inline void displayMenu(multimap<int, Restaurants>::iterator& it,
 
 	while (selection != '<')
 	{
-		cin >> selection;
+		std::cin >> selection;
 
 		if (selection == '1')
 		{
@@ -152,25 +149,25 @@ inline void displayMenu(multimap<int, Restaurants>::iterator& it,
 
 	if (selection == '<')
 	{
-		cout << "\nReturning you to the restaurant selection page...\n" << endl;
+		std::cout << "\nReturning you to the restaurant selection page...\n" << std::endl;
 		chooseRestaurant();
 	}
 }
 
-void printByCategory(multimap<int, Restaurants>::iterator& it, Category category, string restaurant)
+void printByCategory(std::multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant)
 {
 	MenuList menu;
 
-	string categoryName = menu.enumToString(category);
-	cout << categoryName << "\n" << "------------ \n";
+	std::string categoryName = menu.enumToString(category);
+	std::cout << categoryName << "\n" << "------------ \n";
 
 	menu = it->second.getMenuList();
 
-	vector<Menu> tempVector = menu.getItemsInCategory(category); // prints "Not found" if applicable
+	std::vector<Menu> tempVector = menu.getItemsInCategory(category); // prints "Not found" if applicable
 
 	if (tempVector.empty())
 	{
-		cout << "Sorry!  We do not carry any " << categoryName << ". We will return you to the main page.\n" << endl;
+		std::cout << "Sorry!  We do not carry any " << categoryName << ". We will return you to the main page.\n" << std::endl;
 		displayMenu(it, restaurant);
 	}
 	
@@ -178,26 +175,26 @@ void printByCategory(multimap<int, Restaurants>::iterator& it, Category category
 
 	for (int i = 0; i < tempVector.size(); ++i)
 	{
-		cout << "\t" << tempVector[i].getItem() << " - $"
-			<< fixed << setprecision(2) << tempVector[i].getPrice() << endl;
+		std::cout << "\t" << tempVector[i].getItem() << " - $"
+			<< std::fixed << std::setprecision(2) << tempVector[i].getPrice() << std::endl;
 	}
 		
 	order(it, category, restaurant);
 	
 }
 
-void order(multimap<int, Restaurants>::iterator& it, Category category, string restaurant)
+void order(std::multimap<int, Restaurants>::iterator& it, Category category, std::string restaurant)
 {
 	MenuList& menu = it->second.getMenuList();
-	vector<Menu> tempVector = menu.getItemsInCategory(category);
+	std::vector<Menu> tempVector = menu.getItemsInCategory(category);
 
-	string option;
+	std::string option;
 
 	while (option != "n")
 	{
-		cout << "\n	Please make an order (enter 'n' when done with this category): ";
+		std::cout << "\n	Please make an order (enter 'n' when done with this category): ";
 
-		cin >> option;
+		std::cin >> option;
 
 		if (option == "n")
 		{
@@ -209,7 +206,7 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 			if (item.getItem() == option)
 			{
 				namePriceCart.emplace(item.getItem(), item.getPrice());
-				cout << "\t" << option << " added to cart. " << endl;
+				std::cout << "\t" << option << " added to cart. " << std::endl;
 			}
 		}
 	}
@@ -217,43 +214,43 @@ void order(multimap<int, Restaurants>::iterator& it, Category category, string r
 
 void printCart()
 {
-	cout << "Your cart: \n" << endl;
+	std::cout << "Your cart: \n" << std::endl;
 	double total = 0;
 
 	auto it = namePriceCart.begin();
 	while (it != namePriceCart.end())
 	{
-		cout << "\t" << it->first << " - $" << fixed << setprecision(2) << it->second << endl;
+		std::cout << "\t" << it->first << " - $" << std::fixed << std::setprecision(2) << it->second << std::endl;
 		total = total + it->second;
 		++it;
 	}
 
 	double tax = total * 0.0725;
 
-	cout << "\tTax - $" << fixed << setprecision(2) << tax
+	std::cout << "\tTax - $" << std::fixed << std::setprecision(2) << tax
 		<< "\n\t-------------------\n"
-		<< "\tTotal: $" << total + tax << endl;
+		<< "\tTotal: $" << total + tax << std::endl;
 }
 
-void editCart(unordered_multimap<std::string, double>& namePriceCart,
-	multimap<int, Restaurants>::iterator& it, std::string restaurant)
+void editCart(std::unordered_multimap<std::string, double>& namePriceCart,
+	std::multimap<int, Restaurants>::iterator& it, std::string restaurant)
 {
 
-	string removeItem;
+	std::string removeItem;
 
 	while (removeItem != "n")
 	{
-		cout << "Which item do you want to remove? (type 'n' to exit)\n\n";
+		std::cout << "Which item do you want to remove? (type 'n' to exit)\n\n";
 
 		if (namePriceCart.empty())
 		{
-			cout << "Cart is empty!  Returning you back to the previous slide" << endl;
+			std::cout << "Cart is empty!  Returning you back to the previous slide" << std::endl;
 			return displayMenu(it, restaurant);
 		}
 
 		printCart();
 		
-		cin >> removeItem;
+		std::cin >> removeItem;
 
 		auto npIt = namePriceCart.find(removeItem);
 
@@ -261,7 +258,7 @@ void editCart(unordered_multimap<std::string, double>& namePriceCart,
 		{
 			namePriceCart.erase(npIt);
 
-			cout << removeItem << " has been removed." << endl;
+			std::cout << removeItem << " has been removed." << std::endl;
 			
 		}
 		else if (removeItem == "n")
@@ -270,7 +267,7 @@ void editCart(unordered_multimap<std::string, double>& namePriceCart,
 		}
 		else
 		{
-			cout << "Item does not exist" << endl;
+			std::cout << "Item does not exist" << std::endl;
 		}
 
 	}
@@ -282,24 +279,24 @@ void total()
 
 	printCart();
 
-	cout << "\nTransferring you to payment section...\n" << endl;
+	std::cout << "\nTransferring you to payment section...\n" << std::endl;
 	
-	string cardNumber;
+	std::string cardNumber;
 	cardNumber.reserve(16);
 
 	while (cardNumber.size() != 16)
 	{
-		cout << "Please input your credit or debit card number: ";
+		std::cout << "Please input your credit or debit card number: ";
 
-		cin >> cardNumber;
-		int size = cardNumber.size();
+		std::cin >> cardNumber;
+		int size = static_cast<int>(cardNumber.size());
 		if (size != 16)
 		{
-			cout << "Invalid card number!  Try again\n" << endl;
+			std::cout << "Invalid card number!  Try again\n" << std::endl;
 		}
 	}
 
-	string encrypted;
+	std::string encrypted;
 
 	for (unsigned int i{ 0 }; i < cardNumber.size() - 4; ++i)
 	{
@@ -311,13 +308,12 @@ void total()
 		}
 
 	}
-	string remains = cardNumber.substr(12, cardNumber.size());
+	std::string remains = cardNumber.substr(12, cardNumber.size());
 	encrypted += remains;
 
-	cout << "Card number: " << encrypted << " ending in " << remains << endl;
-
-	cout << "Payment accepted!  You will be updated about when you can pick up your order.  Thank you for using MoodFood!" << endl;
-	aRestaurant->~RestaurantsList();
+	std::cout << "Card number: " << encrypted << " ending in " << remains << std::endl;
+	
+	std::cout << "Payment accepted!  You will be updated about when you can pick up your order.  Thank you for using MoodFood!" << std::endl;
 	exit(1);
 
 }
